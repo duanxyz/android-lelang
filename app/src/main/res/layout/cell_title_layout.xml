@@ -4,9 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dataItem"
+            type="com.example.lelangonline.models.DataItem" />
+
+        <variable
+            name="viewModel"
+            type="com.example.lelangonline.ui.home.HomeViewModel" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
         <variable
             name="avatarUrl"
             type="String" />
+
         <variable
             name="reqManager"
             type="com.bumptech.glide.RequestManager" />
