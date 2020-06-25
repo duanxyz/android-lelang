@@ -1,428 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:visibility="gone">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- content header line -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bgContentTop"
-        android:paddingBottom="7dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="7dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/order_id_mock"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:text="@string/price_mock"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/menu_icon" />
-
-    </RelativeLayout>
-
-    <!-- content header image -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/head_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/head_image" />
-
-        <TextView
-            android:id="@+id/head_image_left_text"
-            style="@style/ContentImageBadgeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/head_image"
-            android:layout_alignLeft="@id/head_image"
-            android:layout_alignStart="@id/head_image"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingStart="20dp"
-            android:text="@string/requests_count_mock" />
-
-        <TextView
-            style="@style/ContentImageBadgeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/head_image_left_text"
-            android:layout_alignLeft="@id/head_image_left_text"
-            android:layout_alignStart="@id/head_image_left_text"
-            android:paddingLeft="20dp"
-            android:paddingStart="20dp"
-            android:text="@string/requests_count_badge" />
-
-        <TextView
-            android:id="@+id/head_image_right_text"
-            style="@style/ContentImageBadgeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/head_image"
-            android:layout_alignEnd="@id/head_image"
-            android:layout_alignRight="@id/head_image"
-            android:paddingBottom="10dp"
-            android:paddingEnd="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/weight_mock" />
-
-        <TextView
-            style="@style/ContentImageBadgeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/head_image_right_text"
-            android:layout_alignLeft="@id/head_image_right_text"
-            android:layout_alignStart="@id/head_image_right_text"
-            android:text="@string/weight_badge" />
-
-        <TextView
-            android:id="@+id/head_image_center_text"
-            style="@style/ContentImageBadgeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/head_image"
-            android:layout_centerHorizontal="true"
-            android:paddingBottom="10dp"
-            android:text="@string/pledge_mock" />
-
-        <TextView
-            style="@style/ContentImageBadgeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/head_image_center_text"
-            android:layout_alignLeft="@id/head_image_center_text"
-            android:layout_alignStart="@id/head_image_center_text"
-            android:text="@string/pledge_badge" />
-
-
-    </RelativeLayout>
-
-    <!-- content body layout -->
-    <LinearLayout
+        <data>
+            <variable
+                name="avatarUrl1"
+                type="String" />
+            <variable
+                name="reqManager1"
+                type="com.bumptech.glide.RequestManager" />
+        </data>
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bgContent"
-        android:orientation="vertical"
-        android:paddingBottom="6dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="9dp">
+        android:elevation="4dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:shapeAppearance="@style/ShapeAppearance.CardInfo">
 
-        <!-- avatar and name part -->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/content_avatar_title"
-                style="@style/ContentMainBadgeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="5dp"
-                android:text="@string/sender_badge" />
-
-            <ImageView
-                android:id="@+id/content_avatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/content_avatar_title"
-                android:scaleType="centerCrop"
-                android:src="@drawable/avatar" />
-
-            <TextView
-                android:id="@+id/content_name_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/content_avatar"
-                android:layout_marginBottom="2dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/content_avatar"
-                android:layout_toRightOf="@id/content_avatar"
-                android:text="@string/client_name_mock"
-                android:textColor="@color/mainTextColor"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/content_rating_stars"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/content_name_view"
-                android:layout_alignStart="@id/content_name_view"
-                android:layout_below="@id/content_name_view"
-                android:src="@drawable/stars" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/content_rating_stars"
-                android:layout_marginBottom="-2dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginStart="3dp"
-                android:layout_toEndOf="@id/content_rating_stars"
-                android:layout_toRightOf="@id/content_rating_stars"
-                android:text="@string/rating_mock"
-                android:textColor="@color/contentBadgeTitle"
-                android:textSize="12sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/arrow" />
-
-        </RelativeLayout>
-
-        <!-- divider line -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="6dp"
-            android:layout_marginTop="9dp"
-            android:src="@color/contentDividerLine" />
-
-        <!-- addresses part -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/content_from_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:text="@string/from_badge" />
+                <!-- LEFT TITLE PART -->
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    loadImage="@{avatarUrl1}"
+                    reqManager="@{reqManager1}"
+                    android:layout_weight="4"
+                    android:contentDescription="@string/avatart"/>
 
-                <TextView
-                    android:id="@+id/content_from_address_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_from_badge"
-                    android:layout_alignStart="@id/content_from_badge"
-                    android:layout_below="@id/content_from_badge"
-                    android:text="@string/content_from1_mock"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_from_address_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_from_address_1"
-                    android:layout_alignStart="@id/content_from_address_1"
-                    android:layout_below="@id/content_from_address_1"
-                    android:text="@string/content_from2_mock"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_to_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:text="@string/to_badge" />
-
-                <TextView
-                    android:id="@+id/content_to_address_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_to_badge"
-                    android:layout_alignStart="@id/content_to_badge"
-                    android:layout_below="@id/content_to_badge"
-                    android:text="@string/content_to1_mock"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_to_address_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_to_address_1"
-                    android:layout_alignStart="@id/content_to_address_1"
-                    android:layout_below="@id/content_to_address_1"
-                    android:text="@string/content_to2_mock"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="14sp" />
+                <!-- RIGHT TITLE PART -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingBottom="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingTop="0dp">
 
                 <ImageView
+                    android:id="@+id/title_from_to_dots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/from_to_purple" />
+
+                <TextView
+                    android:id="@+id/setor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/arrow" />
+                    android:layout_alignTop="@+id/title_from_to_dots"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/setor"
+                    android:layout_toEndOf="@+id/title_from_to_dots"
+                    android:ellipsize="marquee"
+                    android:textStyle="bold"
+                    android:fadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:textColor="#99000000"
+                    android:textSize="16sp" />
 
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/tarik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
+                    android:layout_marginStart="31dp"
+                    android:layout_toEndOf="@id/setor"
+                    android:text="@string/tarik"
+                    android:textColor="#99000000"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/saldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="31dp"
+                    android:layout_toEndOf="@id/tarik"
+                    android:text="@string/saldo"
+                    android:textColor="#99000000"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/jmlh_saldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/saldo"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/TarikImg"
+                    android:text="@string/rp_999_999_999"
+                    android:textSize="14sp"
+                    android:textColor="#99000000"
+                    android:textStyle="bold"/>
+
+                <ImageButton
+                    android:id="@+id/setorImg"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_below="@+id/setor"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/title_from_to_dots"
+                    android:background="@drawable/wallet_1" />
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/setorImg"
+                        android:layout_marginStart="10dp"
+                        android:src="@color/contentDividerLine" />
+
+                    <ImageButton
+                    android:id="@+id/TarikImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tarik"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/setorImg"
+                    android:background="@drawable/credit_card" />
+
+                <LinearLayout
+                    android:id="@+id/openCell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/jmlh_saldo"
+                    android:layout_marginTop="25dp"
+                    android:layout_toEndOf="@id/TarikImg"
+                    android:layout_marginStart="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ED000000"
+                        android:text="@string/riwayat"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/down_arrow"/>
+                </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="6dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="9dp">
+
+                <!-- avatar and name part -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/headTanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tanggal"/>
+
+                    <TextView
+                        android:id="@+id/headJumlah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/headTanggal"
+                        android:layout_marginStart="50dp"
+                        android:text="@string/jumlah"/>
+
+                    <TextView
+                        android:id="@+id/headKet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/headJumlah"
+                        android:layout_marginStart="50dp"
+                        android:text="@string/keterangan"/>
+
+                </RelativeLayout>
+
+                <!-- divider line -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="9dp"
+                    android:src="@color/contentDividerLine" />
+
+                <!-- addresses part -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/tidak_ada_riwayat"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- divider line -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="6dp"
-            android:layout_marginTop="7dp"
-            android:src="@color/contentDividerLine" />
-
-        <!-- dates part -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_delivery_date_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:text="@string/delivery_date_badge" />
-
-                <TextView
-                    android:id="@+id/content_delivery_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_delivery_date_badge"
-                    android:layout_alignStart="@id/content_delivery_date_badge"
-                    android:layout_below="@id/content_delivery_date_badge"
-                    android:text="@string/delivery_time_mock"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_delivery_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_delivery_time"
-                    android:layout_alignStart="@id/content_delivery_time"
-                    android:layout_below="@id/content_delivery_time"
-                    android:text="@string/delivery_date_mock"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_deadline_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:text="@string/deadline_badge" />
-
-                <TextView
-                    android:id="@+id/content_deadline_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_deadline_badge"
-                    android:layout_alignStart="@id/content_deadline_badge"
-                    android:layout_below="@id/content_deadline_badge"
-                    android:text="@string/deadline_time_mock"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_deadline_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_deadline_time"
-                    android:layout_alignStart="@id/content_deadline_time"
-                    android:layout_below="@id/content_deadline_time"
-                    android:text=""
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="14sp" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <!-- request button -->
-        <TextView
-            android:id="@+id/content_request_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/btnRequest"
-            android:padding="10dp"
-            android:text="@string/request_btn_text"
-            android:textAlignment="center"
-            android:textColor="@color/mainTextColor"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/btn_annotation_mock"
-            android:textAlignment="center"
-            android:textColor="@color/contentBadgeTitle"
-            android:textSize="12sp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

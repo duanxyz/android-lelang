@@ -23,6 +23,19 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="change_country">Change Country</string>
+    <string name="top_news">Top News</string>
+    <string name="can_t_get_data_check_your_internet_connection_and">Can\'t get data, check your internet connection and</string>
+    <string name="try_again">Try Again</string>
+    <string name="flagImage">flagImage</string>
+    <string name="image_not_found">Image Not Found!</string>
+    <string name="saved_articles">Saved Articles</string>
+    <string name="category_articles">Category</string>
+    <string name="articles_search">Articles Search</string>
+    <string name="type_search_keyword">Type search keyword..</string>
+    <string name="you_didn_t_save_any_article_yet">You didn\'t save any article yet.</string>
+
     <!--Login Validation-->
     <string name="invalid_email_password">Please provide a valid email and password.</string>
     <string name="title_activity_main">MainActivity</string>
@@ -56,5 +69,15 @@
     <string name="content_to1_mock">46th Ave</string>
     <string name="content_to2_mock">Woodside, NY 11101</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="avatart">avatarImage</string>
+    <string name="rp_999_999_999">Rp. 999.999.999</string>
+    <string name="saldo">Saldo</string>
+    <string name="tarik">Tarik</string>
+    <string name="riwayat">riwayat</string>
+    <string name="setor">Setor</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="keterangan">Keterangan</string>
+    <string name="tidak_ada_riwayat">Tidak ada riwayat</string>
 
 </resources>

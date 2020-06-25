@@ -1,34 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:folding-cell="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:folding-cell="http://schemas.android.com/apk/res-auto">
 
-    <com.ramotion.foldingcell.FoldingCell
-        android:id="@+id/folding_cell"
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="avatarUrl"-->
+<!--            type="String" />-->
+<!--        <variable-->
+<!--            name="reqManager"-->
+<!--            type="com.bumptech.glide.RequestManager" />-->
+<!--    </data>-->
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        folding-cell:additionalFlipsCount="2"
-        folding-cell:animationDuration="1300"
-        folding-cell:backSideColor="#f4f0ff"
-        folding-cell:cameraHeight="30"
-        android:onClick=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741">
+        android:layout_height="match_parent">
 
-        <!-- CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than content layout bellow)-->
-        <include layout="@layout/cell_content_layout" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <!-- TITLE (FOLDED) LAYOUT (MUST BE AT LEAST 2x times SMALLER than content layout above) -->
-        <include layout="@layout/cell_title_layout" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/colorPrimaryDark" />
 
-    </com.ramotion.foldingcell.FoldingCell>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Cut"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <com.ramotion.foldingcell.FoldingCell
+                        android:id="@+id/folding_cell"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.638"
+                        folding-cell:additionalFlipsCount="2"
+                        folding-cell:animationDuration="1300"
+                        folding-cell:backSideColor="#f4f0ff"
+                        folding-cell:cameraHeight="30">
+
+                        <!-- CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than content layout bellow)-->
+
+                        <include
+                            android:id="@+id/content"
+                            layout="@layout/cell_content_layout" />
+
+                        <include
+                            android:id="@+id/title"
+                            layout="@layout/cell_title_layout" />
+
+                        <!-- TITLE (FOLDED) LAYOUT (MUST BE AT LEAST 2x times SMALLER than content layout above) -->
+                    </com.ramotion.foldingcell.FoldingCell>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

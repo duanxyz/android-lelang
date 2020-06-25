@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.example.lelangonline.MainActivity;
+import com.example.lelangonline.ui.MainActivity;
 import com.example.lelangonline.R;
 import com.example.lelangonline.ViewModelProviderFactory;
 import com.example.lelangonline.data.model.LoggedInUser;
@@ -22,8 +22,6 @@ import com.example.lelangonline.databinding.ActivityLoginBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -31,9 +29,6 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
-import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

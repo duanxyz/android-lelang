@@ -10,6 +10,9 @@ import androidx.room.Room;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.lelangonline.database.NewsDao;
+import com.example.lelangonline.database.NewsDatabase;
+import com.example.lelangonline.database.saved.SavedDao;
 import com.example.lelangonline.network.main.MainApi;
 import com.example.lelangonline.utils.Constants;
 
@@ -69,13 +72,13 @@ public class AppModule {
         return Glide.with(application);
     }
 
-//    @Singleton
-//    @Provides
-//    static NewsDatabase provideRoomDatabase(Application application){
-//        return Room.databaseBuilder(application,
-//                NewsDatabase.class, Constants.DATABASE_NAME)
-//                .build();
-//    }
+    @Singleton
+    @Provides
+    static NewsDatabase provideRoomDatabase(Application application){
+        return Room.databaseBuilder(application,
+                NewsDatabase.class, Constants.DATABASE_NAME)
+                .build();
+    }
 
     @Singleton
     @Provides
@@ -97,17 +100,17 @@ public class AppModule {
     }
 
 
-//    @Singleton
-//    @Provides
-//    static SavedDao provideSavedDao(NewsDatabase database) {
-//        return database.savedDao();
-//    }
+    @Singleton
+    @Provides
+    static SavedDao provideSavedDao(NewsDatabase database) {
+        return database.savedDao();
+    }
 
-//    @Singleton
-//    @Provides
-//    static NewsDao provideNewsDao(NewsDatabase database) {
-//        return database.newsDao();
-//    }
+    @Singleton
+    @Provides
+    static NewsDao provideNewsDao(NewsDatabase database) {
+        return database.newsDao();
+    }
 
     @Provides
     @Singleton

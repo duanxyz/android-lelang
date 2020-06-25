@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.lelangonline.MainActivity;
-import com.example.lelangonline.ui.login.LoginActivity;
+import com.example.lelangonline.ui.MainActivity;
 import com.example.lelangonline.ui.onboarding.OnboardingActivity;
 import com.example.lelangonline.utils.Constants;
 

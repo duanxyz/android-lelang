@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 
+import com.example.lelangonline.models.DataItem;
+
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -13,12 +15,12 @@ import io.reactivex.Flowable;
 @Dao
 public interface NewsDao {
 
-//    @Insert
-//    void insertArticles(List<ArticlesItem> articlesList);
-//
-//    @Query("DELETE From articles_table")
-//    void deleteArticles();
-//
-//    @Query("SELECT * From articles_table LIMIT :size OFFSET :offset ")
-//    Flowable<List<ArticlesItem>> getArticles(int size, int offset);
+    @Insert
+    void insertBarang(List<DataItem> dataItemList);
+
+    @Query("DELETE From items_table")
+    void deleteBarang();
+
+    @Query("SELECT * From items_table LIMIT :size OFFSET :offset ")
+    Flowable<List<DataItem>> getBarang(int size, int offset);
 }

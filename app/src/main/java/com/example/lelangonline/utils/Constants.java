@@ -22,7 +22,7 @@ public class Constants {
     public static final String BASE_URL = "http://10.0.3.2:8000/api/";
     public static final String API_KEY = "";
     public static final String DATABASE_NAME = "user_database";
-    public static final String ARTICLES_TABLE_NAME = "articles_table";
+    public static final String ITEMS_TABLE_NAME = "items_table";
     public static final String SAVED_TABLE_NAME = "saved_table";
     public static final String COUNTRY_PREFS = "countryPref";
     public static final String USERID_PREFS = "userIDPref";
@@ -67,20 +67,20 @@ public class Constants {
         }
     }
 
-//    public static List<Pair<String, Integer>> getCategoryList(){
-//        List<Pair<String, Integer>> category = new ArrayList<>();
-//        category.add(new Pair<>("World",R.drawable.ic_world));
-//        category.add(new Pair<>("Technology",R.drawable.ic_technology));
-//        category.add(new Pair<>("Business",R.drawable.ic_business));
-//        category.add(new Pair<>("Sports",R.drawable.ic_sport));
-//        category.add(new Pair<>("Entertainment",R.drawable.ic_entertainment));
-//        category.add(new Pair<>("Health", R.drawable.ic_health));
-//        category.add(new Pair<>("Science",R.drawable.ic_science));
-//
-//
-//
-//        return category;
-//    }
+    public static List<Pair<String, Integer>> getCategoryList(){
+        List<Pair<String, Integer>> category = new ArrayList<>();
+        category.add(new Pair<>("World",R.drawable.ic_world));
+        category.add(new Pair<>("Technology",R.drawable.ic_technology));
+        category.add(new Pair<>("Business",R.drawable.ic_business));
+        category.add(new Pair<>("Sports",R.drawable.ic_sport));
+        category.add(new Pair<>("Entertainment",R.drawable.ic_entertainment));
+        category.add(new Pair<>("Health", R.drawable.ic_health));
+        category.add(new Pair<>("Science",R.drawable.ic_science));
+
+
+
+        return category;
+    }
 //    public static List<Country> getCountries() {
 //        List<Country> countryList = new ArrayList<>();
 //        countryList.add(new Country("no", "Norway", "https://cdn.countryflags.com/thumbs/norway/flag-400.png"));

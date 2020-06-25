@@ -1,37 +1,174 @@
 package com.example.lelangonline.ui.home;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.R;
+import com.example.lelangonline.ViewModelProviderFactory;
+import com.example.lelangonline.databinding.FragmentHomeBinding;
 import com.ramotion.foldingcell.FoldingCell;
 
-public class HomeFragment extends Fragment {
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import dagger.android.support.DaggerFragment;
+
+public class HomeFragment extends DaggerFragment {
 
     private HomeViewModel homeViewModel;
+    private FragmentHomeBinding fragmentHomeBinding;
+
+    @Inject
+    ViewModelProviderFactory providerFactory;
+    @Named("circleRequestOption")
+    @Inject
+    RequestOptions requestOptions;
+    @Inject
+    RequestManager requestManager;
+    @Inject
+    ConnectivityManager connectivityManager;
+    private FoldingCell foldingCell;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final FoldingCell fc = (FoldingCell) root.findViewById(R.id.folding_cell);
-        fc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fc.toggle(false);
+        fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+        fragmentHomeBinding.title.setReqManager(requestManager.setDefaultRequestOptions(requestOptions));
+        fragmentHomeBinding.content.setReqManager1(requestManager.setDefaultRequestOptions(requestOptions));
+        fragmentHomeBinding.setLifecycleOwner(this);
+        return fragmentHomeBinding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        foldingCell();
+//        initRecyclersView();
+        initRefreshListeners();
+        observeObservers();
+        avatarImageTitle();
+        avatarImageContent();
+//        binding.flagImage.setOnClickListener(this::changeLanguage);
+    }
+
+    private void observeObservers() {
+        homeViewModel.getItemPagedList().observe(getViewLifecycleOwner(), articlesItems -> {
+            if(articlesItems != null) {
+//                homeAdapter.submitList(articlesItems);
+//                fragmentHomeBinding.homeRV.scrollToPosition(0);
             }
         });
 
-        return root;
+        homeViewModel.getDataStatus().observe(getViewLifecycleOwner(), dataItems -> {
+            if (dataItems != null) {
+//                switch (dataItems) {
+//                    case ERROR:
+//                        stopSwipeRefresh();
+//                        stopShimmer();
+//                        fragmentHomeBinding.homeRV.setVisibility(View.INVISIBLE);
+//                        fragmentHomeBinding.noInternetContainer.getRoot().setVisibility(View.VISIBLE);
+//                        break;
+//                    case LOADING:
+//                        fragmentHomeBinding.shimmerLayout.startShimmer();
+//                        break;
+//                    case LOADED:
+//                        stopSwipeRefresh();
+//                        stopShimmer();
+//                        fragmentHomeBinding.homeRV.setVisibility(View.VISIBLE);
+//                        fragmentHomeBinding.noInternetContainer.getRoot().setVisibility(View.GONE);
+//                }
+
+            }
+        });
+
+        homeViewModel.observeDataDetails().observe(getViewLifecycleOwner(), dataItem -> {
+            if(dataItem != null){
+//                openArticleDetails( dataItem);
+            }
+        });
     }
+
+    private void initRefreshListeners() {
+        fragmentHomeBinding.swipeRefresh.setOnRefreshListener(() -> homeViewModel.refreshData());
+    }
+
+
+    private void stopSwipeRefresh(){
+        fragmentHomeBinding.swipeRefresh.setRefreshing(false);
+    }
+
+    private void avatarImageContent() {
+        homeViewModel.getAvatar().observe(getViewLifecycleOwner(), avatar -> {
+            fragmentHomeBinding.content.setAvatarUrl1(avatar);
+            fragmentHomeBinding.content.setReqManager1(requestManager.setDefaultRequestOptions(requestOptions.error(R.drawable.avatar)));
+            fragmentHomeBinding.content.executePendingBindings();
+        });
+    }
+
+    private void avatarImageTitle() {
+        homeViewModel.getAvatar().observe(getViewLifecycleOwner(), avatar -> {
+            fragmentHomeBinding.title.setAvatarUrl(avatar);
+            fragmentHomeBinding.title.setReqManager(requestManager.setDefaultRequestOptions(requestOptions.error(R.drawable.avatar)));
+            fragmentHomeBinding.title.executePendingBindings();
+        });
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        homeViewModel = new ViewModelProvider(this, providerFactory).get(HomeViewModel.class);
+        homeViewModel.fetchTopNewsData();
+    }
+
+    private void foldingCell() {
+        foldingCell = fragmentHomeBinding.foldingCell;
+        foldingCell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                foldingCell.toggle(false);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK && requestCode == 101) {
+            homeViewModel.refreshData();
+            avatarImageContent();
+            avatarImageTitle();
+        }
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+//        fragmentHomeBinding.homeRV.setLayoutManager(null);
+//        fragmentHomeBinding.homeRV.setAdapter(null);
+//        homeAdapter.submitList(null);
+//        homeViewModel.resetArticleDetails();
+        fragmentHomeBinding = null;
+    }
+
+
 }
