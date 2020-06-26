@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -69,6 +70,19 @@ public class SavedBarang implements Parcelable {
         deskripsi = in.readString();
         category = in.readString();
         status = in.readString();
+    }
+
+    @Ignore
+    public SavedBarang(int id, String category, String deskripsi, String itemName, String photo, int initialPrice, String status, String createdAt, String updatedAt) {
+        this.id = id;
+        this.category = category;
+        this.deskripsi = deskripsi;
+        this.itemName = itemName;
+        this.photo = photo;
+        this.initialPrice = initialPrice;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public void setUpdatedAt(String updatedAt){

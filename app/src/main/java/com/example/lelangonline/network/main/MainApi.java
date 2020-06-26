@@ -27,7 +27,11 @@ public interface MainApi {
 
     @GET("items")
     Flowable<Response> getTopHead(@Query("page") int page,
-                                  @Query("pageSize") int size);
+                                  @Query("limit") int size);
+    @GET("items")
+    Flowable<Response> getCategoryData(@Query("page") int page,
+                                       @Query("limit") int size,
+                                       @Query("category") String category);
 
 //    @GET("top-headlines")
 //    Flowable<Response> getCategoryData(

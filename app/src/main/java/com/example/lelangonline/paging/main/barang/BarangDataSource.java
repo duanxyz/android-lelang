@@ -16,10 +16,8 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
 
-    private static final String TAG = "CategoryDataSource";
+    private static final String TAG = "NewsDataSource";
     private CompositeDisposable disposable;
-    private MainApi mainApi;
-    private String category;
     private MainRepository mainRepository;
     private MutableLiveData<DataStatus> mutableLiveData;
 
@@ -27,14 +25,10 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
         return mutableLiveData;
     }
 
-    public BarangDataSource(CompositeDisposable disposable, MainApi mainApi, String category, MainRepository mainRepository ) {
+    public BarangDataSource(CompositeDisposable disposable, MainRepository mainRepository) {
         this.disposable = disposable;
-        this.mainApi = mainApi;
-        mutableLiveData = new MutableLiveData<>();
-        if(category.equalsIgnoreCase("world"))
-            category = "general";
-        this.category = category;
         this.mainRepository = mainRepository;
+        mutableLiveData = new MutableLiveData<>();
     }
 
     @Override
@@ -59,11 +53,11 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
                                             }
                                         }, error -> Log.d(TAG, "loadInitial: " + error)))
                 ));
+
     }
 
     @Override
     public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataItem> callback) {
-
     }
 
     @Override
@@ -86,4 +80,55 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
 
                         ));
     }
+
+//    private static final String TAG = "BarangDataSource";
+//    private CompositeDisposable disposable;
+//    private MainApi mainApi;
+//    private String category;
+//    private MutableLiveData<DataStatus> mutableLiveData;
+//
+//    public LiveData<DataStatus> getMutableLiveData() {
+//        return mutableLiveData;
+//    }
+//
+//    public BarangDataSource(CompositeDisposable disposable, MainApi mainApi, String category) {
+//        this.disposable = disposable;
+//        this.mainApi = mainApi;
+//        mutableLiveData = new MutableLiveData<>();
+//        if(category.equalsIgnoreCase("world"))
+//            category = "";
+//        this.category = category;
+//    }
+//
+//    @Override
+//    public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, DataItem> callback) {
+//        mutableLiveData.postValue(DataStatus.LOADING);
+//        disposable.add(
+//                mainApi.getCategoryData(1, params.requestedLoadSize, category)
+//                        .subscribe(data -> {
+//                                    if (data.getData().isEmpty())
+//                                        throw new NullPointerException();
+//
+//                                    callback.onResult(data.getData(), null, 2);
+//                                    mutableLiveData.postValue(DataStatus.LOADED);
+//                                }, error -> mutableLiveData.postValue(DataStatus.ERROR)
+//                        ));
+//    }
+//
+//    @Override
+//    public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataItem> callback) {
+//
+//    }
+//
+//    @Override
+//    public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataItem> callback) {
+//        disposable.add(
+//                mainApi.getCategoryData(params.key, params.requestedLoadSize, category)
+//                        .subscribe(data -> {
+//                                    callback.onResult(data.getData(), params.key + 1);
+//                                    mutableLiveData.postValue(DataStatus.LOADED);
+//                                }, throwable -> Log.d(TAG, "database  ERROR " + throwable)
+//
+//                        ));
+//    }
 }

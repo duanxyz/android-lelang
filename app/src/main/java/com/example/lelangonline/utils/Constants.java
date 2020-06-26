@@ -6,6 +6,8 @@ import android.os.Build;
 import android.util.Pair;
 
 import com.example.lelangonline.R;
+import com.example.lelangonline.models.DataItem;
+import com.example.lelangonline.models.saved.SavedBarang;
 //import com.example.lelangonline.models.ArticlesItem;
 //import com.example.lelangonline.models.Country;
 //import com.example.lelangonline.models.saved.SavedArticle;
@@ -39,10 +41,10 @@ public class Constants {
     public static final String COUNTRY_PREFS_IMAGE = "countryImage";
 
 
-//    public static SavedArticle convertArticleClass(ArticlesItem articlesItem){
-//        return new SavedArticle(articlesItem.getPublishedAt(), articlesItem.getAuthor(), articlesItem.getUrlToImage(), articlesItem.getDescription(),
-//                articlesItem.getSource(), articlesItem.getTitle(), articlesItem.getUrl(), articlesItem.getContent());
-//    }
+    public static SavedBarang convertBarangClass(DataItem dataItem){
+        return new SavedBarang(dataItem.getId(), dataItem.getCategory(), dataItem.getDeskripsi(), dataItem.getItemName(),
+                dataItem.getPhoto(), dataItem.getInitialPrice(), dataItem.getStatus(), dataItem.getCreatedAt(), dataItem.getUpdatedAt());
+    }
 
     public static String getTodayDate() {
         SimpleDateFormat day = new SimpleDateFormat("EEEE", Locale.getDefault());
@@ -70,7 +72,7 @@ public class Constants {
     public static List<Pair<String, Integer>> getCategoryList(){
         List<Pair<String, Integer>> category = new ArrayList<>();
         category.add(new Pair<>("World",R.drawable.ic_world));
-        category.add(new Pair<>("Technology",R.drawable.ic_technology));
+        category.add(new Pair<>("Emas",R.drawable.ic_technology));
         category.add(new Pair<>("Business",R.drawable.ic_business));
         category.add(new Pair<>("Sports",R.drawable.ic_sport));
         category.add(new Pair<>("Entertainment",R.drawable.ic_entertainment));

@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.di.ViewModelKey;
-import com.example.lelangonline.network.main.MainApi;
 import com.example.lelangonline.paging.main.barang.BarangDataSourceFactory;
 import com.example.lelangonline.ui.MainRepository;
-import com.example.lelangonline.ui.barang.BarangItemAdapter;
-import com.example.lelangonline.ui.barang.BarangMainAdapter;
+import com.example.lelangonline.ui.barang.BarangAdapter;
 import com.example.lelangonline.ui.barang.BarangViewModel;
+import com.example.lelangonline.ui.barang.CategoryItemAdapter;
 
 import javax.inject.Named;
 
@@ -25,12 +24,52 @@ import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public abstract class BarangModule {
-    @Named("vertical")
-    @BarangScope
-    @Provides
-    static LinearLayoutManager provideVerticalLayoutManager(Application application) {
-        return new LinearLayoutManager(application, LinearLayoutManager.VERTICAL, false);
-    }
+
+//    @Named("vertical")
+//    @BarangScope
+//    @Provides
+//    static LinearLayoutManager provideVerticalLayoutManager(Application application) {
+//        return new LinearLayoutManager(application, LinearLayoutManager.VERTICAL, false);
+//    }
+//
+//    @Named("horizontal")
+//    @BarangScope
+//    @Provides
+//    static LinearLayoutManager provideLinearLayoutManager(Application application) {
+//        return new LinearLayoutManager(application, LinearLayoutManager.HORIZONTAL, false);
+//    }
+//
+//    @Provides
+//    @BarangScope
+//    static BarangDataSourceFactory provideBarangDataSourceFactory(CompositeDisposable disposable , MainApi mainApi) {
+//        return new BarangDataSourceFactory(mainApi, disposable);
+//    }
+//
+//    @BarangScope
+//    @Provides
+//    static BarangMainAdapter provideMainAdapter(RequestManager requestManager, @Named("defaultRequestOption") RequestOptions requestOptions) {
+//        return new BarangMainAdapter(requestManager, requestOptions);
+//    }
+//
+//    @BarangScope
+//    @Provides
+//    static BarangItemAdapter provideBarangAdapter() {
+//        return new BarangItemAdapter();
+//    }
+//
+//
+//
+//    @Binds
+//    @IntoMap
+//    @BarangScope
+//    @ViewModelKey(BarangViewModel.class)
+//    abstract ViewModel bindHomeViewModel(BarangViewModel BarangViewModel);
+@Named("vertical")
+@BarangScope
+@Provides
+static LinearLayoutManager provideVerticalLayoutManager(Application application) {
+    return new LinearLayoutManager(application, LinearLayoutManager.VERTICAL, false);
+}
 
     @Named("horizontal")
     @BarangScope
@@ -41,27 +80,27 @@ public abstract class BarangModule {
 
     @Provides
     @BarangScope
-    static BarangDataSourceFactory provideBarangDataSourceFactory(CompositeDisposable disposable , MainApi mainApi, MainRepository mainRepository) {
-        return new BarangDataSourceFactory(mainApi, disposable, mainRepository);
+    static BarangDataSourceFactory provideDataSourceFactory(CompositeDisposable disposable , MainRepository repository) {
+        return new BarangDataSourceFactory(repository, disposable);
+    }
+
+
+    @BarangScope
+    @Provides
+    static BarangAdapter provideHomeAdapter(RequestManager requestManager, @Named("defaultRequestOption") RequestOptions requestOptions) {
+        return new BarangAdapter(requestManager,requestOptions);
     }
 
     @BarangScope
     @Provides
-    static BarangMainAdapter provideMainAdapter(RequestManager requestManager, @Named("defaultRequestOption") RequestOptions requestOptions) {
-        return new BarangMainAdapter(requestManager, requestOptions);
+    static CategoryItemAdapter provideCategoryAdapter() {
+        return new CategoryItemAdapter();
     }
-
-    @BarangScope
-    @Provides
-    static BarangItemAdapter provideBarangAdapter() {
-        return new BarangItemAdapter();
-    }
-
 
 
     @Binds
     @IntoMap
     @BarangScope
     @ViewModelKey(BarangViewModel.class)
-    abstract ViewModel bindHomeViewModel(BarangViewModel BarangViewModel);
+    abstract ViewModel bindBarangViewModel(BarangViewModel barangViewModel);
 }

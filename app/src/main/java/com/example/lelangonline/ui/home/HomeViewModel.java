@@ -67,4 +67,5 @@ public class HomeViewModel extends ViewModel {
             itemPagedList.getValue().getDataSource().invalidate();
         }
     }
+
 }

@@ -4,25 +4,24 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.R;
-import com.example.lelangonline.databinding.RvCategoryMainLayoutBinding;
+import com.example.lelangonline.databinding.RvHomeLayoutBinding;
 import com.example.lelangonline.models.DataItem;
 
-public class BarangMainAdapter extends PagedListAdapter<DataItem, BarangMainAdapter.MainViewHolder> {
+public class BarangAdapter extends PagedListAdapter<DataItem, BarangAdapter.MainViewHolder> {
 
     private RequestManager requestManager;
     private RequestOptions requestOptions;
     private BarangViewModel barangViewModel;
 
-    public BarangMainAdapter(RequestManager requestManager, RequestOptions requestOptions) {
+
+    public BarangAdapter(RequestManager requestManager, RequestOptions requestOptions) {
         super(DataItem.CALLBACK);
         this.requestManager = requestManager;
         this.requestOptions = requestOptions;
@@ -32,7 +31,7 @@ public class BarangMainAdapter extends PagedListAdapter<DataItem, BarangMainAdap
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MainViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.rv_category_main_layout, parent, false));
+                R.layout.rv_home_layout, parent, false));
     }
 
     @Override
@@ -42,18 +41,10 @@ public class BarangMainAdapter extends PagedListAdapter<DataItem, BarangMainAdap
     }
 
 
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
+    class MainViewHolder extends RecyclerView.ViewHolder {
+        private RvHomeLayoutBinding binding;
 
-    public void setViewModel(BarangViewModel mViewModel) {
-    }
-
-    public class MainViewHolder extends RecyclerView.ViewHolder {
-        private RvCategoryMainLayoutBinding binding;
-
-        MainViewHolder(@NonNull RvCategoryMainLayoutBinding itemView) {
+        MainViewHolder(@NonNull RvHomeLayoutBinding itemView) {
             super(itemView.getRoot());
             binding = itemView;
         }
@@ -63,15 +54,13 @@ public class BarangMainAdapter extends PagedListAdapter<DataItem, BarangMainAdap
             binding.setRequestManage(requestManager.setDefaultRequestOptions(requestOptions));
             binding.setViewModel(barangViewModel);
             binding.setPosition(getAdapterPosition());
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)binding.cardView.getLayoutParams();
-            if(getAdapterPosition() == 0)
-                params.setMargins(8, 144, 8, 8);
-            else
-                params.setMargins(8, 4, 8, 8);
-
-            binding.cardView.setLayoutParams(params);
             binding.executePendingBindings();
         }
 
     }
+
+    public void setViewModel(BarangViewModel barangViewModel) {
+        this.barangViewModel = barangViewModel;
+    }
+
 }
