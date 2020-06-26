@@ -71,13 +71,12 @@ public class Constants {
 
     public static List<Pair<String, Integer>> getCategoryList(){
         List<Pair<String, Integer>> category = new ArrayList<>();
-        category.add(new Pair<>("World",R.drawable.ic_world));
-        category.add(new Pair<>("Emas",R.drawable.ic_technology));
-        category.add(new Pair<>("Business",R.drawable.ic_business));
-        category.add(new Pair<>("Sports",R.drawable.ic_sport));
-        category.add(new Pair<>("Entertainment",R.drawable.ic_entertainment));
-        category.add(new Pair<>("Health", R.drawable.ic_health));
-        category.add(new Pair<>("Science",R.drawable.ic_science));
+        category.add(new Pair<>("semua",R.drawable.ic_world));
+        category.add(new Pair<>("emas",R.drawable.ic_technology));
+        category.add(new Pair<>("kendaraan",R.drawable.ic_business));
+        category.add(new Pair<>("pertanian",R.drawable.ic_sport));
+        category.add(new Pair<>("peikanan",R.drawable.ic_entertainment));
+        category.add(new Pair<>("sertifikat", R.drawable.ic_health));
 
 
 

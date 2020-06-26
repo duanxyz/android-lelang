@@ -18,6 +18,7 @@ public class HomeDataSource extends PageKeyedDataSource<Integer, DataItem> {
     private static final String TAG = "NewsDataSource";
     private CompositeDisposable disposable;
     private MainRepository mainRepository;
+    private String category = null;
     private MutableLiveData<DataStatus> mutableLiveData;
 
     public LiveData<DataStatus> getMutableLiveData() {
@@ -33,7 +34,7 @@ public class HomeDataSource extends PageKeyedDataSource<Integer, DataItem> {
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, DataItem> callback) {
         mutableLiveData.postValue(DataStatus.LOADING);
-        disposable.add(mainRepository.fetchFromApi(1, params.requestedLoadSize)
+        disposable.add(mainRepository.fetchFromApi(1, params.requestedLoadSize, category)
                 .subscribe(data -> {
                             if (data.getData().isEmpty())
                                 throw new NullPointerException();
@@ -62,7 +63,7 @@ public class HomeDataSource extends PageKeyedDataSource<Integer, DataItem> {
     @Override
     public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataItem> callback) {
         disposable.add(
-                mainRepository.fetchFromApi(params.key, params.requestedLoadSize)
+                mainRepository.fetchFromApi(params.key, params.requestedLoadSize, category)
                         .subscribe(data -> {
                                     callback.onResult(data.getData(), params.key + 1);
                                     mutableLiveData.postValue(DataStatus.LOADED);

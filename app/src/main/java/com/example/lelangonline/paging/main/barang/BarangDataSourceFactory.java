@@ -25,13 +25,13 @@ public class BarangDataSourceFactory extends DataSource.Factory {
     public BarangDataSourceFactory(MainRepository mainRepository, CompositeDisposable disposable) {
         this.mainRepository = mainRepository;
         this.disposable = disposable;
-        this.category = null;
+        this.category = "semua";
         mutableLiveData = new MutableLiveData<>();
     }
 
     @Override
     public DataSource<Integer ,DataItem> create() {
-        BarangDataSource dataSource = new BarangDataSource(disposable, mainRepository);
+        BarangDataSource dataSource = new BarangDataSource(disposable, mainRepository, category);
         mutableLiveData.postValue(dataSource);
         return dataSource;
     }
@@ -41,6 +41,7 @@ public class BarangDataSourceFactory extends DataSource.Factory {
     }
 
     public void setCategory(String category) {
+        this.category = category;
     }
 //    private MainApi mainApi;
 //    private CompositeDisposable disposable;

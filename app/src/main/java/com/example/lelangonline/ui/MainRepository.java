@@ -71,8 +71,8 @@ public class MainRepository {
         newsDao.insertBarang(response.getData());
     }
 
-    public Flowable<Response> fetchFromApi(int page, int size) {
-        return mainApi.getTopHead(page, size)
+    public Flowable<Response> fetchFromApi(int page, int size, String category) {
+        return mainApi.getCategoryData(page, size, category)
                 .timeout(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io());
     }
