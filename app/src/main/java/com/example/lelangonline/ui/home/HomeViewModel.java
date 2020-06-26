@@ -2,14 +2,10 @@ package com.example.lelangonline.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
-import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
 import com.example.lelangonline.models.DataItem;
-import com.example.lelangonline.paging.main.home.HomeDataSource;
-import com.example.lelangonline.paging.main.home.HomeDataSourceFactory;
 import com.example.lelangonline.ui.MainRepository;
 import com.example.lelangonline.utils.DataStatus;
 
@@ -19,15 +15,13 @@ public class HomeViewModel extends ViewModel {
 
     private MainRepository mainRepository;
     private LiveData<PagedList<DataItem>> itemPagedList;
-    private HomeDataSourceFactory homeFactory;
     private PagedList.Config config;
     private LiveData<DataStatus> newsData;
     private MutableLiveData<DataItem> dataDetails;
 
     @Inject
-    HomeViewModel(MainRepository mainRepository, PagedList.Config config, HomeDataSourceFactory homeFactory) {
+    HomeViewModel(MainRepository mainRepository, PagedList.Config config) {
         this.mainRepository = mainRepository;
-        this.homeFactory = homeFactory;
         this.config = config;
         this.dataDetails = new MutableLiveData<>();
     }
@@ -36,10 +30,10 @@ public class HomeViewModel extends ViewModel {
         return mainRepository.getSelectedAvatarImage();
     }
 
-    void fetchTopNewsData() {
-        itemPagedList = new LivePagedListBuilder(homeFactory, config).build();
-        newsData = Transformations.switchMap(homeFactory.getMutableLiveData(), HomeDataSource::getMutableLiveData);
-    }
+//    void fetchTopNewsData() {
+//        itemPagedList = new LivePagedListBuilder(homeFactory, config).build();
+//        newsData = Transformations.switchMap(homeFactory.getMutableLiveData(), HomeDataSource::getMutableLiveData);
+//    }
 
     LiveData<DataStatus> getDataStatus() {
         return newsData;

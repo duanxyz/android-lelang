@@ -10,6 +10,9 @@
         <variable
             name="reqManager"
             type="com.bumptech.glide.RequestManager" />
+        <variable
+            name="viewModel"
+            type="com.example.lelangonline.ui.barang.BarangViewModel" />
     </data>
 
     <FrameLayout
@@ -102,6 +105,46 @@
 <!--                    app:layout_constraintEnd_toEndOf="parent"-->
 <!--                    app:layout_constraintTop_toTopOf="parent"-->
 <!--                    android:contentDescription="@string/flagImage" />-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/raduis_black_corner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/searchEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:hint="@string/type_search_keyword"
+                        android:maxLines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/searchButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/searchButton"
+                        android:layout_width="50dp"
+                        android:layout_height="0dp"
+                        android:background="@null"
+                        android:onClick="@{()-> viewModel.searchArticles(searchEditText.getText().toString())}"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_search"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categoryItemsRV"
                     android:layout_width="0dp"
@@ -111,7 +154,7 @@
                     app:layout_scrollFlags="scroll|enterAlways"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
                 <androidx.recyclerview.widget.RecyclerView

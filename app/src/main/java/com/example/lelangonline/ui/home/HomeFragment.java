@@ -62,50 +62,12 @@ public class HomeFragment extends DaggerFragment {
         super.onViewCreated(view, savedInstanceState);
 
         foldingCell();
-//        initRecyclersView();
         initRefreshListeners();
-        observeObservers();
+//        observeObservers();
         avatarImageTitle();
         avatarImageContent();
-//        binding.flagImage.setOnClickListener(this::changeLanguage);
     }
 
-    private void observeObservers() {
-        homeViewModel.getItemPagedList().observe(getViewLifecycleOwner(), articlesItems -> {
-            if(articlesItems != null) {
-//                homeAdapter.submitList(articlesItems);
-//                fragmentHomeBinding.homeRV.scrollToPosition(0);
-            }
-        });
-
-        homeViewModel.getDataStatus().observe(getViewLifecycleOwner(), dataItems -> {
-            if (dataItems != null) {
-//                switch (dataItems) {
-//                    case ERROR:
-//                        stopSwipeRefresh();
-//                        stopShimmer();
-//                        fragmentHomeBinding.homeRV.setVisibility(View.INVISIBLE);
-//                        fragmentHomeBinding.noInternetContainer.getRoot().setVisibility(View.VISIBLE);
-//                        break;
-//                    case LOADING:
-//                        fragmentHomeBinding.shimmerLayout.startShimmer();
-//                        break;
-//                    case LOADED:
-//                        stopSwipeRefresh();
-//                        stopShimmer();
-//                        fragmentHomeBinding.homeRV.setVisibility(View.VISIBLE);
-//                        fragmentHomeBinding.noInternetContainer.getRoot().setVisibility(View.GONE);
-//                }
-
-            }
-        });
-
-        homeViewModel.observeDataDetails().observe(getViewLifecycleOwner(), dataItem -> {
-            if(dataItem != null){
-//                openArticleDetails( dataItem);
-            }
-        });
-    }
 
     private void initRefreshListeners() {
         fragmentHomeBinding.swipeRefresh.setOnRefreshListener(() -> homeViewModel.refreshData());
@@ -136,7 +98,7 @@ public class HomeFragment extends DaggerFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeViewModel = new ViewModelProvider(this, providerFactory).get(HomeViewModel.class);
-        homeViewModel.fetchTopNewsData();
+//        homeViewModel.fetchTopNewsData();
     }
 
     private void foldingCell() {
@@ -163,11 +125,7 @@ public class HomeFragment extends DaggerFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        fragmentHomeBinding.homeRV.setLayoutManager(null);
-//        fragmentHomeBinding.homeRV.setAdapter(null);
-//        homeAdapter.submitList(null);
-//        homeViewModel.resetArticleDetails();
-        fragmentHomeBinding = null;
+       fragmentHomeBinding = null;
     }
 
 

@@ -1,5 +1,7 @@
 package com.example.lelangonline.ui.barang;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
@@ -24,6 +26,7 @@ public class BarangViewModel extends ViewModel {
     private LiveData<PagedList<DataItem>> itemPagedList;
     private BarangDataSourceFactory barangFactory;
     private PagedList.Config config;
+    private MutableLiveData<DataStatus> dataStatus;
     private LiveData<DataStatus> newsData;
     private MutableLiveData<DataItem> barangDetails;
     private MutableLiveData<Integer> selectedItem;
@@ -79,7 +82,6 @@ public class BarangViewModel extends ViewModel {
         NumberFormat formatter = new DecimalFormat("#,###");
         String formattedNumber = formatter.format(price);
         return formattedNumber;
-//formattedNumber is equal to 1,000,000
     }
 
     LiveData<Integer> getSelectedItem() {
@@ -90,6 +92,16 @@ public class BarangViewModel extends ViewModel {
         selectedItem.setValue(pos);
         barangFactory.setCategory(category);
         refreshData();
+    }
+
+    public void searchArticles(String search){
+        Log.d("TAG", "searchArticles: ");
+        if(search.equals("") || search.length() == 0)
+            dataStatus.setValue(DataStatus.EMPTY);
+        else {
+            barangFactory.setSearch(search);
+            refreshData();
+        }
     }
 
 

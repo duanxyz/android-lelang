@@ -26,26 +26,13 @@ public interface MainApi {
     Call<ResponseMember> memberRequest(@Path("id") int id);
 
     @GET("items")
-    Flowable<Response> getTopHead(@Query("page") int page,
-                                  @Query("limit") int size);
+    Flowable<Response> getItem(@Query("page") int page,
+                                  @Query("limit") int size,
+                                  @Query("category") String category,
+                                  @Query("keyword") String keyword);
     @GET("items")
     Flowable<Response> getCategoryData(@Query("page") int page,
                                        @Query("limit") int size,
                                        @Query("category") String category);
-
-//    @GET("top-headlines")
-//    Flowable<Response> getCategoryData(
-//            @Query("category") String query,
-//            @Query("page") int page,
-//            @Query("pageSize") int size,
-//            @Query("apiKey") String apiKey);
-//
-//    @GET("everything")
-//    Flowable<Response> getEverythingSearch(
-//            @Query("q") String query,
-//            @Query("page") int page,
-//            @Query("pageSize") int size,
-//            @Query("apiKey") String apiKey);
-
 
 }

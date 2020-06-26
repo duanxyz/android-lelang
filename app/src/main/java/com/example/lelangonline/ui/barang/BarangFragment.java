@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Toast;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
@@ -66,7 +67,7 @@ public class BarangFragment extends DaggerFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this, providerFactory).get(BarangViewModel.class);
-        viewModel.fetchTopNewsData();
+        viewModel.  fetchTopNewsData();
     }
 
     @Override
@@ -162,6 +163,8 @@ public class BarangFragment extends DaggerFragment {
                         stopShimmer();
                         binding.homeRV.setVisibility(View.VISIBLE);
                         binding.noInternetContainer.getRoot().setVisibility(View.GONE);
+//                    case EMPTY:
+//                        Toast.makeText(getActivity(), "Field is empty!", Toast.LENGTH_SHORT).show();
                 }
 
             }

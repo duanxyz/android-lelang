@@ -97,7 +97,7 @@
                     android:textColor="#fff"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:text="@{dataItem.category}"
+                    android:text="@{dataItem.itemName}"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     app:layout_constraintBottom_toTopOf="@+id/articleTitle"

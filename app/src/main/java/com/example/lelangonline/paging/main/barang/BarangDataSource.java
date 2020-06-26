@@ -19,25 +19,27 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
     private CompositeDisposable disposable;
     private MainRepository mainRepository;
     private String category;
+    private String search;
     private MutableLiveData<DataStatus> mutableLiveData;
 
     public LiveData<DataStatus> getMutableLiveData() {
         return mutableLiveData;
     }
 
-    public BarangDataSource(CompositeDisposable disposable, MainRepository mainRepository, String category) {
+    public BarangDataSource(CompositeDisposable disposable, MainRepository mainRepository, String category, String search) {
         this.disposable = disposable;
         this.mainRepository = mainRepository;
         mutableLiveData = new MutableLiveData<>();
         if(category.equalsIgnoreCase("semua"))
             category = "";
         this.category = category;
+        this.search = search;
     }
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, DataItem> callback) {
         mutableLiveData.postValue(DataStatus.LOADING);
-        disposable.add(mainRepository.fetchFromApi(1, params.requestedLoadSize, category)
+        disposable.add(mainRepository.fetchFromApi(1, params.requestedLoadSize, category, search)
                 .subscribe(data -> {
                             if (data.getData().isEmpty())
                                 throw new NullPointerException();
@@ -66,7 +68,7 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
     @Override
     public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataItem> callback) {
         disposable.add(
-                mainRepository.fetchFromApi(params.key, params.requestedLoadSize, category)
+                mainRepository.fetchFromApi(params.key, params.requestedLoadSize, category, search)
                         .subscribe(data -> {
                                     callback.onResult(data.getData(), params.key + 1);
                                     mutableLiveData.postValue(DataStatus.LOADED);
