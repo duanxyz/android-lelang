@@ -28,6 +28,7 @@ import com.example.lelangonline.R;
 import com.example.lelangonline.ViewModelProviderFactory;
 import com.example.lelangonline.databinding.FragmentBarangBinding;
 import com.example.lelangonline.models.DataItem;
+import com.example.lelangonline.ui.details.DetailsActivity;
 import com.example.lelangonline.utils.Constants;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -178,10 +179,10 @@ public class BarangFragment extends DaggerFragment {
 
 
     private void openArticleDetails(DataItem articlesItem) {
-//        Intent intent = new Intent(getActivity(), DetailsActivity.class);
-//        intent.putExtra("article", Constants.convertArticleClass(articlesItem));
+        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+        intent.putExtra("item", Constants.convertBarangClass(articlesItem));
 //        intent.putExtra("source", articlesItem.getSource());
-//        startActivity(intent);
+        startActivity(intent);
     }
 
     private void changeLanguage(View view) {

@@ -14,6 +14,12 @@
         />
 
     <item
+        android:id="@+id/navigation_auction"
+        android:title="Lelang"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        />
+
+    <item
         android:id="@+id/navigation_dashboard"
         android:title="@string/title_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"

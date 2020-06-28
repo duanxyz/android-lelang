@@ -2,12 +2,16 @@ package com.example.lelangonline.network.main;
 
 import com.example.lelangonline.data.model.ResponseMember;
 import com.example.lelangonline.models.Response;
+import com.example.lelangonline.models.auction.Auction;
+import com.example.lelangonline.models.auction.DataItem;
 
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -29,10 +33,14 @@ public interface MainApi {
     Flowable<Response> getItem(@Query("page") int page,
                                   @Query("limit") int size,
                                   @Query("category") String category,
-                                  @Query("keyword") String keyword);
+                                  @Query("keyword") String keyword,
+                               @Query("date") String date);
     @GET("items")
     Flowable<Response> getCategoryData(@Query("page") int page,
                                        @Query("limit") int size,
                                        @Query("category") String category);
+
+    @POST("auctions")
+    Observable<DataItem> createAuction(@Body DataItem auction);
 
 }

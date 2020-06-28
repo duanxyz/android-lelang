@@ -20,13 +20,14 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
     private MainRepository mainRepository;
     private String category;
     private String search;
+    private String date;
     private MutableLiveData<DataStatus> mutableLiveData;
 
     public LiveData<DataStatus> getMutableLiveData() {
         return mutableLiveData;
     }
 
-    public BarangDataSource(CompositeDisposable disposable, MainRepository mainRepository, String category, String search) {
+    public BarangDataSource(CompositeDisposable disposable, MainRepository mainRepository, String category, String search, String date) {
         this.disposable = disposable;
         this.mainRepository = mainRepository;
         mutableLiveData = new MutableLiveData<>();
@@ -34,12 +35,13 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
             category = "";
         this.category = category;
         this.search = search;
+        this.date = date;
     }
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, DataItem> callback) {
         mutableLiveData.postValue(DataStatus.LOADING);
-        disposable.add(mainRepository.fetchFromApi(1, params.requestedLoadSize, category, search)
+        disposable.add(mainRepository.fetchFromApi(1, params.requestedLoadSize, category, search, date)
                 .subscribe(data -> {
                             if (data.getData().isEmpty())
                                 throw new NullPointerException();
@@ -68,7 +70,7 @@ public class BarangDataSource extends PageKeyedDataSource<Integer, DataItem> {
     @Override
     public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataItem> callback) {
         disposable.add(
-                mainRepository.fetchFromApi(params.key, params.requestedLoadSize, category, search)
+                mainRepository.fetchFromApi(params.key, params.requestedLoadSize, category, search, date)
                         .subscribe(data -> {
                                     callback.onResult(data.getData(), params.key + 1);
                                     mutableLiveData.postValue(DataStatus.LOADED);

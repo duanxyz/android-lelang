@@ -18,14 +18,14 @@ public interface SavedDao {
     void saveBarang(SavedBarang savedBarang);
 
     @Query("DELETE From saved_table WHERE id =:barangId")
-    void deleteSavedBarang(String barangId);
+    void deleteSavedBarang(int barangId);
 
     @Query("SELECT * From saved_table")
     Single<List<SavedBarang>> getSavedBarang();
 
-    @Query("SELECT COUNT(*) From saved_table WHERE id =:name")
-    Integer getSpecificSavedBarang(String name);
+    @Query("SELECT COUNT(*) From saved_table WHERE id =:id")
+    Integer getSpecificSavedBarang(int id);
 
-    @Query("SELECT COUNT(*) From saved_table WHERE id =:name")
-    Single<Integer> singleSpecificSavedBarang(String name);
+    @Query("SELECT COUNT(*) From saved_table WHERE id =:id")
+    Single<Integer> singleSpecificSavedBarang(int id);
 }

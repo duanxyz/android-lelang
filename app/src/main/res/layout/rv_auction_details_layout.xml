@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dataItem"
+            type="com.example.lelangonline.models.DataItem" />
+
+        <variable
+            name="requestManage"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailViewModel" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/idPenawar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dataItem.itemName}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/jmlTawaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dataItem.category}"
+            app:layout_constraintStart_toEndOf="@+id/idPenawar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

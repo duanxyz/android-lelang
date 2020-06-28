@@ -10,6 +10,8 @@ import com.example.lelangonline.di.onboarding.OnboardingScope;
 import com.example.lelangonline.di.splash.SplashModule;
 import com.example.lelangonline.di.splash.SplashScope;
 import com.example.lelangonline.ui.MainActivity;
+import com.example.lelangonline.ui.auction.auctionDetail.AuctionActivity;
+import com.example.lelangonline.ui.details.DetailsActivity;
 import com.example.lelangonline.ui.login.LoginActivity;
 import com.example.lelangonline.ui.onboarding.OnboardingActivity;
 import com.example.lelangonline.ui.splash.SplashActivity;
@@ -49,9 +51,12 @@ abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(modules = LoginModule.class)
     abstract LoginActivity loginActivity();
 
-//
-//    @ContributesAndroidInjector
-//    abstract DetailsActivity detailsActivity();
+
+    @ContributesAndroidInjector
+    abstract DetailsActivity detailsActivity();
+
+    @ContributesAndroidInjector
+    abstract AuctionActivity auctionActivity();
 
 
 

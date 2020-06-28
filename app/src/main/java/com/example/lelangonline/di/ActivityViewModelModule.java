@@ -3,6 +3,8 @@ package com.example.lelangonline.di;
 import androidx.lifecycle.ViewModel;
 
 
+import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailViewModel;
+import com.example.lelangonline.ui.details.DetailsViewModel;
 import com.example.lelangonline.ui.login.LoginViewModel;
 
 import dagger.Binds;
@@ -17,4 +19,14 @@ public abstract class ActivityViewModelModule {
     @IntoMap
     @ViewModelKey(LoginViewModel.class)
     abstract ViewModel bindLoginViewModel(LoginViewModel loginViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailsViewModel.class)
+    abstract ViewModel bindDetailsViewModel(DetailsViewModel detailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AuctionDetailViewModel.class)
+    abstract ViewModel bindAuctionDetailsViewModel(AuctionDetailViewModel auctionDetailViewModel);
 }

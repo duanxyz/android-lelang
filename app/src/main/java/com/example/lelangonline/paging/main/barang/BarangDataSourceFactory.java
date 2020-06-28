@@ -20,6 +20,7 @@ public class BarangDataSourceFactory extends DataSource.Factory {
     private CompositeDisposable disposable;
     private String category;
     private String search;
+    private String date;
     private MutableLiveData<BarangDataSource> mutableLiveData;
 
     @Inject
@@ -28,12 +29,13 @@ public class BarangDataSourceFactory extends DataSource.Factory {
         this.disposable = disposable;
         this.category = "semua";
         this.search = "";
+        this.date = "";
         mutableLiveData = new MutableLiveData<>();
     }
 
     @Override
     public DataSource<Integer ,DataItem> create() {
-        BarangDataSource dataSource = new BarangDataSource(disposable, mainRepository, category, search);
+        BarangDataSource dataSource = new BarangDataSource(disposable, mainRepository, category, search, date);
         mutableLiveData.postValue(dataSource);
         return dataSource;
     }
@@ -48,6 +50,10 @@ public class BarangDataSourceFactory extends DataSource.Factory {
 
     public void setSearch(String search) {
         this.search = search;
+    }
+
+    public void setDate(String currentDateandTime) {
+        this.date = currentDateandTime;
     }
 //    private MainApi mainApi;
 //    private CompositeDisposable disposable;

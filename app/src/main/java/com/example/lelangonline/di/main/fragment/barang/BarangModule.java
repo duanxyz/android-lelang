@@ -64,10 +64,10 @@ public abstract class BarangModule {
 //    @BarangScope
 //    @ViewModelKey(BarangViewModel.class)
 //    abstract ViewModel bindHomeViewModel(BarangViewModel BarangViewModel);
-@Named("vertical")
-@BarangScope
-@Provides
-static LinearLayoutManager provideVerticalLayoutManager(Application application) {
+    @Named("vertical")
+    @BarangScope
+    @Provides
+    static LinearLayoutManager provideVerticalLayoutManager(Application application) {
     return new LinearLayoutManager(application, LinearLayoutManager.VERTICAL, false);
 }
 

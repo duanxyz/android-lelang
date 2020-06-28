@@ -60,6 +60,14 @@ public class SavedBarang implements Parcelable {
     @ColumnInfo(name = "status")
     private String status;
 
+    @SerializedName("auction_date")
+    @ColumnInfo(name = "auction_date")
+    private String auctionDate;
+
+    @SerializedName("auction_time")
+    @ColumnInfo(name = "auction_time")
+    private String auctionTime;
+
     protected SavedBarang(Parcel in) {
         updatedAt = in.readString();
         photo = in.readString();
@@ -70,10 +78,12 @@ public class SavedBarang implements Parcelable {
         deskripsi = in.readString();
         category = in.readString();
         status = in.readString();
+        auctionDate = in.readString();
+        auctionTime = in.readString();
     }
 
     @Ignore
-    public SavedBarang(int id, String category, String deskripsi, String itemName, String photo, int initialPrice, String status, String createdAt, String updatedAt) {
+    public SavedBarang(int id, String category, String deskripsi, String itemName, String photo, int initialPrice, String status, String auctionDate, String auctionTime, String createdAt, String updatedAt) {
         this.id = id;
         this.category = category;
         this.deskripsi = deskripsi;
@@ -81,6 +91,8 @@ public class SavedBarang implements Parcelable {
         this.photo = photo;
         this.initialPrice = initialPrice;
         this.status = status;
+        this.auctionDate = auctionDate;
+        this.auctionTime = auctionTime;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -162,6 +174,22 @@ public class SavedBarang implements Parcelable {
         return status;
     }
 
+    public void setAuctionDate(String auctionDate){
+        this.auctionDate = auctionDate;
+    }
+
+    public String getAuctionDate(){
+        return auctionDate;
+    }
+
+    public void setAuctionTime(String auctionTime){
+        this.auctionTime = auctionTime;
+    }
+
+    public String getAuctionTime(){
+        return auctionTime;
+    }
+
     @Override
     public String toString(){
         return
@@ -173,6 +201,8 @@ public class SavedBarang implements Parcelable {
                         ",item_name = '" + itemName + '\'' +
                         ",id = '" + id + '\'' +
                         ",deskripsi = '" + deskripsi + '\'' +
+                        ",auction_date = '" + auctionDate + '\'' +
+                        ",auction_time = '" + auctionTime + '\'' +
                         ",category = '" + category + '\'' +
                         ",status = '" + status + '\'' +
                         "}";
@@ -206,5 +236,7 @@ public class SavedBarang implements Parcelable {
         dest.writeString(deskripsi);
         dest.writeString(category);
         dest.writeString(status);
+        dest.writeString(auctionDate);
+        dest.writeString(auctionTime);
     }
 }

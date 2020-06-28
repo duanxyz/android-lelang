@@ -58,6 +58,14 @@ public class DataItem implements Parcelable {
 	@ColumnInfo(name = "status")
 	private String status;
 
+	@SerializedName("auction_date")
+	@ColumnInfo(name = "auction_date")
+	private String auctionDate;
+
+	@SerializedName("auction_time")
+	@ColumnInfo(name = "auction_time")
+	private String auctionTime;
+
 	protected DataItem(Parcel in) {
 		updatedAt = in.readString();
 		photo = in.readString();
@@ -68,6 +76,8 @@ public class DataItem implements Parcelable {
 		deskripsi = in.readString();
 		category = in.readString();
 		status = in.readString();
+		auctionDate = in.readString();
+		auctionTime = in.readString();
 	}
 
 	public void setUpdatedAt(String updatedAt){
@@ -148,6 +158,22 @@ public class DataItem implements Parcelable {
 		return status;
 	}
 
+	public void setAuctionDate(String auctionDate){
+		this.auctionDate = auctionDate;
+	}
+
+	public String getAuctionDate(){
+		return auctionDate;
+	}
+
+	public void setAuctionTime(String auctionTime){
+		this.auctionTime = auctionTime;
+	}
+
+	public String getAuctionTime(){
+		return auctionTime;
+	}
+
 	@Override
  	public String toString(){
 		return
@@ -161,6 +187,8 @@ public class DataItem implements Parcelable {
 			",deskripsi = '" + deskripsi + '\'' +
 			",category = '" + category + '\'' +
 			",status = '" + status + '\'' +
+			",auction_date = '" + auctionDate + '\'' +
+			",auction_time = '" + auctionTime + '\'' +
 			"}";
 		}
 
@@ -205,5 +233,7 @@ public class DataItem implements Parcelable {
 		dest.writeString(deskripsi);
 		dest.writeString(category);
 		dest.writeString(status);
+		dest.writeString(auctionDate);
+		dest.writeString(auctionTime);
 	}
 }
