@@ -28,6 +28,7 @@ import com.example.lelangonline.R;
 import com.example.lelangonline.ViewModelProviderFactory;
 import com.example.lelangonline.databinding.FragmentBarangBinding;
 import com.example.lelangonline.models.DataItem;
+import com.example.lelangonline.ui.auction.auctionDetail.bid.BidFragment;
 import com.example.lelangonline.ui.details.DetailsActivity;
 import com.example.lelangonline.utils.Constants;
 import com.google.android.material.snackbar.Snackbar;

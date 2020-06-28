@@ -5,11 +5,17 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 
 import com.example.lelangonline.models.auction.Auction;
 import com.example.lelangonline.models.auction.DataItem;
+import com.example.lelangonline.paging.auction.AuctionDataSource;
+import com.example.lelangonline.paging.auction.AuctionDataSourceFactory;
 import com.example.lelangonline.utils.Constants;
+import com.example.lelangonline.utils.DataStatus;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -22,14 +28,65 @@ public class AuctionDetailViewModel extends ViewModel {
     private MutableLiveData<Boolean> closeItem;
     private AuctionDetailRepository auctionDetailRepository;
     public MutableLiveData<String> Tawaran = new MutableLiveData<>();
-
+    private AuctionDataSourceFactory factory;
+    private PagedList.Config config;
+    private MutableLiveData<DataItem> auctionDetails;
+    private LiveData<PagedList<DataItem>> itemPagedList;
+    private MutableLiveData<DataStatus> dataStatus;
+    private LiveData<DataStatus> newsData;
 
     @Inject
-    AuctionDetailViewModel(AuctionDetailRepository auctionDetailRepository, SharedPreferences preferences) {
+    AuctionDetailViewModel(AuctionDetailRepository auctionDetailRepository, SharedPreferences preferences,
+                           PagedList.Config config, AuctionDataSourceFactory factory) {
         this.auctionDetailRepository = auctionDetailRepository;
         this.preferences = preferences;
+        this.factory = factory;
+        this.config = config;
+        this.auctionDetails = new MutableLiveData<>();
         closeItem = new MutableLiveData<>();
     }
+
+    public void fetchAuctionData() {
+        itemPagedList = new LivePagedListBuilder(factory, config).build();
+        newsData = Transformations.switchMap(factory.getMutableLiveData(), AuctionDataSource::getMutableLiveData);
+    }
+
+    LiveData<DataItem> observeAuctionDetails(){
+        return auctionDetails;
+    }
+
+    public void refreshData() {
+        if (itemPagedList.getValue() != null) {
+            itemPagedList.getValue().getDataSource().invalidate();
+        }
+    }
+
+    LiveData<PagedList<DataItem>> getItemPagedList() {
+        return itemPagedList;
+    }
+
+    LiveData<DataStatus> getDataStatus() {
+        return newsData;
+    }
+
+    public void resetItemDetails() {auctionDetails.setValue(null);}
+
+    public void getAuction(String item_id){
+        Log.d("TAG", "getAuction: ");
+        if(item_id.equals("") || item_id.length() == 0)
+            dataStatus.setValue(DataStatus.EMPTY);
+        else {
+            factory.setItemId(item_id);
+            refreshData();
+        }
+    }
+
+    public String offer(int offer){
+        NumberFormat formatter = new DecimalFormat("#,###");
+        String formattedNumber = "Rp. "+formatter.format(offer);
+        return formattedNumber;
+    }
+
 
     public void closeAuction(){
         closeItem.setValue(true);

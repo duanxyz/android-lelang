@@ -25,6 +25,7 @@ import com.example.lelangonline.ViewModelProviderFactory;
 import com.example.lelangonline.databinding.FragmentAuctionBinding;
 import com.example.lelangonline.models.DataItem;
 import com.example.lelangonline.ui.auction.auctionDetail.AuctionActivity;
+import com.example.lelangonline.ui.auction.auctionDetail.bid.BidFragment;
 import com.example.lelangonline.utils.Constants;
 
 import java.text.SimpleDateFormat;
@@ -134,6 +135,8 @@ public class AuctionFragment extends DaggerFragment {
     }
 
     private void openAuctionDetails(DataItem dataItems) {
+//        BidFragment bf = new BidFragment();
+//        bf.setArguments(dataItems);
         Intent intent = new Intent(getActivity(), AuctionActivity.class);
         intent.putExtra("item", Constants.convertBarangClass(dataItems));
 //        intent.putExtra("source", articlesItem.getSource());

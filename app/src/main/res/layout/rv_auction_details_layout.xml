@@ -8,7 +8,7 @@
 
         <variable
             name="dataItem"
-            type="com.example.lelangonline.models.DataItem" />
+            type="com.example.lelangonline.models.auction.DataItem" />
 
         <variable
             name="requestManage"
@@ -31,7 +31,7 @@
             android:id="@+id/idPenawar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{dataItem.itemName}"
+            android:text="@{dataItem.bidderUsername}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -39,7 +39,7 @@
             android:id="@+id/jmlTawaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{dataItem.category}"
+            android:text="@{viewModel.offer(dataItem.offer)}"
             app:layout_constraintStart_toEndOf="@+id/idPenawar"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -29,18 +29,26 @@ public interface MainApi {
     @GET("members/{id}")
     Call<ResponseMember> memberRequest(@Path("id") int id);
 
+    //item
     @GET("items")
     Flowable<Response> getItem(@Query("page") int page,
-                                  @Query("limit") int size,
-                                  @Query("category") String category,
-                                  @Query("keyword") String keyword,
+                               @Query("limit") int size,
+                               @Query("category") String category,
+                               @Query("keyword") String keyword,
                                @Query("date") String date);
     @GET("items")
     Flowable<Response> getCategoryData(@Query("page") int page,
                                        @Query("limit") int size,
                                        @Query("category") String category);
 
+    //auction
     @POST("auctions")
     Observable<DataItem> createAuction(@Body DataItem auction);
+
+    @GET("auction")
+    Flowable<Auction> getAuction(@Query("page") int page,
+                                 @Query("limit") int size,
+                                 @Query("item_id") String item_id);
+
 
 }

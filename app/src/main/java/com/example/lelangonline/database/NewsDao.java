@@ -23,4 +23,13 @@ public interface NewsDao {
 
     @Query("SELECT * From items_table LIMIT :size OFFSET :offset ")
     Flowable<List<DataItem>> getBarang(int size, int offset);
+
+    @Insert
+    void insertAuction(List<com.example.lelangonline.models.auction.DataItem> dataItem);
+
+    @Query("DELETE From auctions_table")
+    void deleteAuction();
+
+    @Query("SELECT * From auctions_table LIMIT :size OFFSET :offset ")
+    Flowable<List<com.example.lelangonline.models.auction.DataItem>> getAuction(int size, int offset);
 }

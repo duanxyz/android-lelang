@@ -48,13 +48,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/articleDate">
 
-                <FrameLayout
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/auctionDetailRV"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:scaleType="centerCrop">
-                    
-                </FrameLayout>
+                    android:scaleType="centerCrop"
+                    />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView

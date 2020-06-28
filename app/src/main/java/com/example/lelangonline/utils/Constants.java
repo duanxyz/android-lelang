@@ -26,6 +26,7 @@ public class Constants {
     public static final String API_KEY = "";
     public static final String DATABASE_NAME = "user_database";
     public static final String ITEMS_TABLE_NAME = "items_table";
+    public static final String ITEMS_TABLE_NAME1 = "auctions_table";
     public static final String SAVED_TABLE_NAME = "saved_table";
     public static final String COUNTRY_PREFS = "countryPref";
     public static final String USERID_PREFS = "userIDPref";

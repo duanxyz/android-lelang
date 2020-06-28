@@ -17,7 +17,7 @@ import com.example.lelangonline.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(tableName = Constants.SAVED_TABLE_NAME)
-@TypeConverters(SourceConverter.class)
+//@TypeConverters(SourceConverter.class)
 public class SavedBarang implements Parcelable {
     public SavedBarang(){
 
