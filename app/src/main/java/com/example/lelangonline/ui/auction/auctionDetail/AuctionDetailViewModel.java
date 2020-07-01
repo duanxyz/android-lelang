@@ -83,7 +83,7 @@ public class AuctionDetailViewModel extends ViewModel {
 
     public String offer(int offer){
         NumberFormat formatter = new DecimalFormat("#,###");
-        String formattedNumber = "Rp. "+formatter.format(offer);
+        String formattedNumber = ": Rp. "+formatter.format(offer);
         return formattedNumber;
     }
 

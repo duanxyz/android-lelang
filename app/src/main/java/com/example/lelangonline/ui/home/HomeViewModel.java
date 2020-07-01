@@ -30,11 +30,6 @@ public class HomeViewModel extends ViewModel {
         return mainRepository.getSelectedAvatarImage();
     }
 
-//    void fetchTopNewsData() {
-//        itemPagedList = new LivePagedListBuilder(homeFactory, config).build();
-//        newsData = Transformations.switchMap(homeFactory.getMutableLiveData(), HomeDataSource::getMutableLiveData);
-//    }
-
     LiveData<DataStatus> getDataStatus() {
         return newsData;
     }
@@ -50,11 +45,6 @@ public class HomeViewModel extends ViewModel {
     void resetdataDetails(){
         dataDetails.setValue(null);
     }
-
-    public void openDataDetails(DataItem dataItem){
-        dataDetails.setValue(dataItem);
-    }
-
 
     void refreshData() {
         if (itemPagedList.getValue() != null) {

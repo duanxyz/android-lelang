@@ -4,8 +4,7 @@ import com.example.lelangonline.data.model.ResponseMember;
 import com.example.lelangonline.models.Response;
 import com.example.lelangonline.models.auction.Auction;
 import com.example.lelangonline.models.auction.DataItem;
-
-import java.util.List;
+import com.example.lelangonline.models.users.Members;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
@@ -25,9 +24,11 @@ public interface MainApi {
     @POST("auth/login")
     Call<ResponseBody> loginRequest(@Field("email") String email,
                                   @Field("password") String password);
-    //@FormUrlEncoded
     @GET("members/{id}")
     Call<ResponseMember> memberRequest(@Path("id") int id);
+
+    @GET("members")
+    Flowable<Members> fetchMembersById(@Query("id") int id);
 
     //item
     @GET("items")
@@ -36,19 +37,15 @@ public interface MainApi {
                                @Query("category") String category,
                                @Query("keyword") String keyword,
                                @Query("date") String date);
-    @GET("items")
-    Flowable<Response> getCategoryData(@Query("page") int page,
-                                       @Query("limit") int size,
-                                       @Query("category") String category);
 
     //auction
     @POST("auctions")
     Observable<DataItem> createAuction(@Body DataItem auction);
 
-    @GET("auction")
-    Flowable<Auction> getAuction(@Query("page") int page,
-                                 @Query("limit") int size,
-                                 @Query("item_id") String item_id);
+    @GET("auctions")
+    Flowable<Auction> getAuction(@Query("item_id") String item_id,
+                                 @Query("page") int page,
+                                 @Query("limit") int size);
 
 
 }

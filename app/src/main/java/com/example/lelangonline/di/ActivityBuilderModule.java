@@ -7,7 +7,6 @@ import com.example.lelangonline.di.main.MainScope;
 import com.example.lelangonline.di.main.fragment.FragmentMainModule;
 import com.example.lelangonline.di.auctionDetail.AuctionDetailsModule;
 import com.example.lelangonline.di.auctionDetail.AuctionDetailsScope;
-import com.example.lelangonline.di.auctionDetail.bid.FragmentBidModule;
 import com.example.lelangonline.di.onboarding.OnboardingModule;
 import com.example.lelangonline.di.onboarding.OnboardingScope;
 import com.example.lelangonline.di.splash.SplashModule;
@@ -33,15 +32,6 @@ abstract class ActivityBuilderModule {
     })
     abstract MainActivity mainActivityInject();
 
-//    @LanguageScope
-//    @ContributesAndroidInjector(
-//            modules = {
-//                    LanguageModule.class,
-//            }
-//    )
-//    abstract LanguageActivity languageActivity();
-//
-//
     @SplashScope
     @ContributesAndroidInjector(modules = SplashModule.class)
     abstract SplashActivity splashActivity();
@@ -59,10 +49,7 @@ abstract class ActivityBuilderModule {
     abstract DetailsActivity detailsActivity();
 
     @AuctionDetailsScope
-    @ContributesAndroidInjector(modules = {
-            FragmentBidModule.class,
-            AuctionDetailsModule.class,
-    })
+    @ContributesAndroidInjector(modules = AuctionDetailsModule.class)
     abstract AuctionActivity auctionActivity();
 
 

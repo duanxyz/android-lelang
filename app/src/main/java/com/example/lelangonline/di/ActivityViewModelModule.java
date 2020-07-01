@@ -25,8 +25,5 @@ public abstract class ActivityViewModelModule {
     @ViewModelKey(DetailsViewModel.class)
     abstract ViewModel bindDetailsViewModel(DetailsViewModel detailsViewModel);
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(AuctionDetailViewModel.class)
-    abstract ViewModel bindAuctionDetailsViewModel(AuctionDetailViewModel auctionDetailViewModel);
+
 }

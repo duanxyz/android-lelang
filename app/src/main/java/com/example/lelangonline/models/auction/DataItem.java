@@ -17,8 +17,9 @@ public class DataItem implements Parcelable {
 
 	public DataItem(){
 	}
-	@PrimaryKey(autoGenerate = true)
-	private int uid;
+	@PrimaryKey
+	@SerializedName("id")
+	private int id;
 
 	@SerializedName("offer")
 	@ColumnInfo(name = "offer")
@@ -39,10 +40,6 @@ public class DataItem implements Parcelable {
 	@SerializedName("created_at")
 	@ColumnInfo(name = "created_at")
 	private String createdAt;
-
-	@SerializedName("id")
-	@ColumnInfo(name = "id")
-	private int id;
 
 	protected DataItem(Parcel in) {
 		offer = in.readInt();
@@ -76,14 +73,6 @@ public class DataItem implements Parcelable {
 			return new DataItem[size];
 		}
 	};
-
-	public void setUid(int uid){
-		this.uid = uid;
-	}
-
-	public int getUid(){
-		return uid;
-	}
 
 	public void setOffer(int offer){
 		this.offer = offer;

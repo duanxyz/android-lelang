@@ -3,22 +3,26 @@ package com.example.lelangonline.di.auctionDetail;
 import android.app.Application;
 import android.content.SharedPreferences;
 
+import androidx.lifecycle.ViewModel;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.database.NewsDao;
 import com.example.lelangonline.database.saved.SavedDao;
-import com.example.lelangonline.di.auctionDetail.bid.BidScope;
+import com.example.lelangonline.di.ViewModelKey;
 import com.example.lelangonline.network.main.MainApi;
 import com.example.lelangonline.paging.auction.AuctionDataSourceFactory;
 import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailRepository;
+import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailViewModel;
 import com.example.lelangonline.ui.auction.auctionDetail.bid.BidAdapter;
 
 import javax.inject.Named;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
+import dagger.multibindings.IntoMap;
 import io.reactivex.disposables.CompositeDisposable;
 
 @Module
@@ -59,4 +63,9 @@ public abstract class AuctionDetailsModule {
                                                                   NewsDao newsDao, SharedPreferences preferences){
         return new AuctionDetailRepository(savedDao, disposable, mainApi, newsDao, preferences);
     }
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AuctionDetailViewModel.class)
+    abstract ViewModel bindAuctionDetailsViewModel(AuctionDetailViewModel auctionDetailViewModel);
 }

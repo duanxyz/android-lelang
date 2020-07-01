@@ -7,9 +7,12 @@ import com.example.lelangonline.di.main.fragment.barang.BarangModule;
 import com.example.lelangonline.di.main.fragment.barang.BarangScope;
 import com.example.lelangonline.di.main.fragment.home.HomeModule;
 import com.example.lelangonline.di.main.fragment.home.HomeScope;
+import com.example.lelangonline.di.main.fragment.profile.ProfileModule;
+import com.example.lelangonline.di.main.fragment.profile.ProfileScope;
 import com.example.lelangonline.ui.auction.AuctionFragment;
 import com.example.lelangonline.ui.barang.BarangFragment;
 import com.example.lelangonline.ui.home.HomeFragment;
+import com.example.lelangonline.ui.profile.ProfileFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -23,11 +26,6 @@ public abstract class FragmentMainModule {
     @ContributesAndroidInjector(modules = HomeModule.class)
     abstract HomeFragment homeFragment();
 
-//    @SearchScope
-//    @ContributesAndroidInjector(modules = SearchModule.class)
-//    abstract SearchFragment searchFragment();
-//
-//
     @BarangScope
     @ContributesAndroidInjector(modules = BarangModule.class)
     abstract BarangFragment barangFragment();
@@ -36,7 +34,7 @@ public abstract class FragmentMainModule {
     @ContributesAndroidInjector(modules = AuctionModule.class)
     abstract AuctionFragment auctionFragment();
 
-//    @SavedScope
-//    @ContributesAndroidInjector(modules = SavedModule.class)
-//    abstract SavedFragment savedFragment();
+    @ProfileScope
+    @ContributesAndroidInjector(modules = ProfileModule.class)
+    abstract ProfileFragment profileFragment();
 }

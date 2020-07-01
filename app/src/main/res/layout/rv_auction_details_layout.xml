@@ -25,12 +25,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/idPenawar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
             android:text="@{dataItem.bidderUsername}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -39,6 +43,8 @@
             android:id="@+id/jmlTawaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
             android:text="@{viewModel.offer(dataItem.offer)}"
             app:layout_constraintStart_toEndOf="@+id/idPenawar"
             app:layout_constraintTop_toTopOf="parent" />

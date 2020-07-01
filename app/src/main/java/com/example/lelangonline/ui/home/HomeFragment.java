@@ -48,6 +48,12 @@ public class HomeFragment extends DaggerFragment {
     ConnectivityManager connectivityManager;
     private FoldingCell foldingCell;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        homeViewModel = new ViewModelProvider(this, providerFactory).get(HomeViewModel.class);
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
@@ -60,19 +66,15 @@ public class HomeFragment extends DaggerFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         foldingCell();
         initRefreshListeners();
-//        observeObservers();
         avatarImageTitle();
         avatarImageContent();
     }
 
-
     private void initRefreshListeners() {
         fragmentHomeBinding.swipeRefresh.setOnRefreshListener(() -> homeViewModel.refreshData());
     }
-
 
     private void stopSwipeRefresh(){
         fragmentHomeBinding.swipeRefresh.setRefreshing(false);
@@ -92,13 +94,6 @@ public class HomeFragment extends DaggerFragment {
             fragmentHomeBinding.title.setReqManager(requestManager.setDefaultRequestOptions(requestOptions.error(R.drawable.avatar)));
             fragmentHomeBinding.title.executePendingBindings();
         });
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        homeViewModel = new ViewModelProvider(this, providerFactory).get(HomeViewModel.class);
-//        homeViewModel.fetchTopNewsData();
     }
 
     private void foldingCell() {
@@ -121,12 +116,10 @@ public class HomeFragment extends DaggerFragment {
         }
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
        fragmentHomeBinding = null;
+       foldingCell = null;
     }
-
-
 }

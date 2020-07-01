@@ -2,7 +2,6 @@ package com.example.lelangonline.ui.auction;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -25,12 +23,10 @@ import com.example.lelangonline.ViewModelProviderFactory;
 import com.example.lelangonline.databinding.FragmentAuctionBinding;
 import com.example.lelangonline.models.DataItem;
 import com.example.lelangonline.ui.auction.auctionDetail.AuctionActivity;
-import com.example.lelangonline.ui.auction.auctionDetail.bid.BidFragment;
 import com.example.lelangonline.utils.Constants;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -135,8 +131,6 @@ public class AuctionFragment extends DaggerFragment {
     }
 
     private void openAuctionDetails(DataItem dataItems) {
-//        BidFragment bf = new BidFragment();
-//        bf.setArguments(dataItems);
         Intent intent = new Intent(getActivity(), AuctionActivity.class);
         intent.putExtra("item", Constants.convertBarangClass(dataItems));
 //        intent.putExtra("source", articlesItem.getSource());
@@ -181,12 +175,4 @@ public class AuctionFragment extends DaggerFragment {
         viewModel.resetItemDetails();
         binding = null;
     }
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = ViewModelProviders.of(this).get(AuctionViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
-
 }

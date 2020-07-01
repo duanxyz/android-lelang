@@ -1,18 +1,14 @@
 package com.example.lelangonline.ui.auction.auctionDetail;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.bumptech.glide.RequestManager;
 import com.example.lelangonline.R;
@@ -21,8 +17,6 @@ import com.example.lelangonline.databinding.ActivityAuctionBinding;
 import com.example.lelangonline.models.saved.SavedBarang;
 
 import com.example.lelangonline.ui.auction.auctionDetail.bid.BidAdapter;
-import com.example.lelangonline.ui.auction.auctionDetail.bid.BidFragment;
-import com.example.lelangonline.ui.details.DetailsViewModel;
 
 import javax.inject.Inject;
 
@@ -47,32 +41,46 @@ public class AuctionActivity extends DaggerAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initBinding();
-        initView();
-        initRecyclersView();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_auction);
+        binding.setLifecycleOwner(this);
+        viewModel = new ViewModelProvider(this, providerFactory).get(AuctionDetailViewModel.class);
+        SavedBarang dataItem = getIntent().getExtras().getParcelable("item");
+
+//        initBinding();
+//        Source source = getIntent().getExtras().getParcelable("source");
+
+        binding.setViewModel(viewModel);
+        binding.setReqManager(requestManager);
         viewModel.fetchAuctionData();
+        binding.setItem(dataItem);
+        viewModel.getAuction(String.valueOf(dataItem.getId()));
+        initRecyclersView();
+        viewModel.checkIfItemExist(dataItem.getId());
+        observeObservers(dataItem.getId());
+//        observe();
+//        initView();
 
 //        initRefreshListeners();
 
 //        binding.setSource(source);
     }
 
-    private void initBinding() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_auction);
-        binding.setLifecycleOwner(this);
-        viewModel = new ViewModelProvider(this, providerFactory).get(AuctionDetailViewModel.class);
-    }
+//    private void initBinding() {
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_auction);
+//        binding.setLifecycleOwner(this);
+//        viewModel = new ViewModelProvider(this, providerFactory).get(AuctionDetailViewModel.class);
+//    }
 
-    private void initView() {
-        SavedBarang dataItem = getIntent().getExtras().getParcelable("item");
-//        Source source = getIntent().getExtras().getParcelable("source");
-
-        binding.setViewModel(viewModel);
-        binding.setReqManager(requestManager);
-        binding.setItem(dataItem);
-//        viewModel.checkIfItemExist(dataItem.getId());
-        observeObservers(dataItem.getId());
-    }
+//    private void initView() {
+//        SavedBarang dataItem = getIntent().getExtras().getParcelable("item");
+////        Source source = getIntent().getExtras().getParcelable("source");
+//
+//        binding.setViewModel(viewModel);
+//        binding.setReqManager(requestManager);
+//        binding.setItem(dataItem);
+////        viewModel.checkIfItemExist(dataItem.getId());
+//        observeObservers(dataItem.getId());
+//    }
 
     private void observeObservers(int id) {
         viewModel.getCloseItem().observe(this, close -> {
@@ -103,6 +111,8 @@ public class AuctionActivity extends DaggerAppCompatActivity {
 //                        stopSwipeRefresh();
 //                        stopShimmer();
                         binding.auctionDetailRV.setVisibility(View.VISIBLE);
+//                        viewModel.getAuction(String.valueOf(id));
+
 //                        binding.noInternetContainer.getRoot().setVisibility(View.GONE);
 //                    case EMPTY:
 //                        Toast.makeText(getActivity(), "Field is empty!", Toast.LENGTH_SHORT).show();
@@ -110,6 +120,7 @@ public class AuctionActivity extends DaggerAppCompatActivity {
 
             }
         });
+
     }
 
 //    private void stopShimmer(){
@@ -131,5 +142,25 @@ public class AuctionActivity extends DaggerAppCompatActivity {
         binding.auctionDetailRV.setLayoutManager(layoutManager);
         binding.auctionDetailRV.setAdapter(bidAdapter);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK && requestCode == 101) {
+            viewModel.refreshData();
+        }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding.auctionDetailRV.setLayoutManager(null);
+        binding.auctionDetailRV.setAdapter(null);
+        bidAdapter.submitList(null);
+        viewModel.resetItemDetails();
+        binding = null;
+    }
+
 
 }

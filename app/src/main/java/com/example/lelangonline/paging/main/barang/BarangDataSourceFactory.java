@@ -55,34 +55,4 @@ public class BarangDataSourceFactory extends DataSource.Factory {
     public void setDate(String currentDateandTime) {
         this.date = currentDateandTime;
     }
-//    private MainApi mainApi;
-//    private CompositeDisposable disposable;
-//    private String category;
-//    private  MainRepository mainRepository;
-//    private MutableLiveData<BarangDataSource> mutableLiveData;
-//
-//    public BarangDataSourceFactory(MainApi mainApi, CompositeDisposable disposable) {
-//        this.mainApi = mainApi;
-//        this.disposable = disposable;
-//        this.category = "";
-//        this.mainRepository = mainRepository;
-//        mutableLiveData = new MutableLiveData<>();
-//    }
-//
-//    public MutableLiveData<BarangDataSource> getMutableLiveData() {
-//        return mutableLiveData;
-//    }
-//
-//    @Override
-//    public DataSource<Integer, DataItem> create() {
-//        Log.d("MMMMMM", "create: " );
-//        BarangDataSource dataSource = new BarangDataSource(disposable, mainApi,category);
-//        mutableLiveData.postValue(dataSource);
-//        return dataSource;
-//    }
-//
-//    public void setCategory(String category){
-//        this.category = category;
-//    }
-
 }

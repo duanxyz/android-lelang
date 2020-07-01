@@ -35,8 +35,6 @@ public class BarangViewModel extends ViewModel {
     private MutableLiveData<DataItem> barangDetails;
     private MutableLiveData<Integer> selectedItem;
 
-
-
     @Inject
     BarangViewModel(MainRepository mainRepository, PagedList.Config config, BarangDataSourceFactory barangFactory) {
         this.mainRepository = mainRepository;
@@ -46,7 +44,7 @@ public class BarangViewModel extends ViewModel {
         this.barangDetails = new MutableLiveData<>();
     }
 
-    void fetchTopNewsData(){
+    void fetchBarangData(){
         itemPagedList = new LivePagedListBuilder(barangFactory, config).build();
         newsData = Transformations.switchMap(barangFactory.getMutableLiveData(), BarangDataSource::getMutableLiveData);
     }
@@ -67,11 +65,6 @@ public class BarangViewModel extends ViewModel {
 
     void resetArticleDetails(){
         barangDetails.setValue(null);
-    }
-
-    LiveData<String> getCountry() {
-        mainRepository.getAvatarImage();
-        return mainRepository.getSelectedAvatarImage();
     }
 
     LiveData<DataStatus> getDataStatus() {
@@ -107,65 +100,4 @@ public class BarangViewModel extends ViewModel {
             refreshData();
         }
     }
-
-
-//    private LiveData<PagedList<DataItem>> itemPagedList;
-//    private LiveData<DataStatus> dataStatus;
-//    private BarangDataSourceFactory factory;
-//    private PagedList.Config config;
-//    private MutableLiveData<Integer> selectedItem;
-//    private MutableLiveData<DataItem> dataDetails;
-//
-//    @Inject
-//    public BarangViewModel(BarangDataSourceFactory factory, PagedList.Config config) {
-//        this.factory = factory;
-//        this.config = config;
-//        this.selectedItem = new MutableLiveData<>();
-//        this.dataDetails = new MutableLiveData<>();
-//        fetchBarangsData();
-//    }
-//
-//    private void fetchBarangsData() {
-//        itemPagedList = new LivePagedListBuilder(factory, config).build();
-//        dataStatus = Transformations.switchMap(factory.getMutableLiveData(), BarangDataSource::getMutableLiveData);
-//
-//    }
-//
-//    public void resetItemDetails() {
-//        dataDetails.setValue(null);
-//    }
-//
-//    public void refreshData() {
-//        if (itemPagedList.getValue() != null) {
-//            itemPagedList.getValue().getDataSource().invalidate();
-//        }
-//    }
-//
-//    LiveData<DataItem> getBarangDetails() {
-//        return dataDetails;
-//    }
-//
-//    LiveData<Integer> getSelectedItem() {
-//        return selectedItem;
-//    }
-//
-//    LiveData<DataStatus> getDataStatus() {
-//        return dataStatus;
-//    }
-//
-//
-//    LiveData<PagedList<DataItem>> getItemPagedList() {
-//        return itemPagedList;
-//    }
-//
-//    public void fetchCategoryNewsData(String category, int pos){
-//        selectedItem.setValue(pos);
-//        factory.setCategory(category);
-//        refreshData();
-//    }
-//
-//    public void openBarangDetails(DataItem dataItem){
-//        dataDetails.setValue(dataItem);
-//    }
-
 }

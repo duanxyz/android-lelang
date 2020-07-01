@@ -20,8 +20,10 @@ public class DataItem implements Parcelable {
 
 	public DataItem(){
 	}
-	@PrimaryKey(autoGenerate = true)
-	private int uid;
+	@PrimaryKey
+	@SerializedName("id")
+	private int id;
+
 	@SerializedName("updated_at")
 	@ColumnInfo(name = "updated_at")
 	private String updatedAt;
@@ -41,10 +43,6 @@ public class DataItem implements Parcelable {
 	@SerializedName("item_name")
 	@ColumnInfo(name = "item_name")
 	private String itemName;
-
-	@SerializedName("id")
-	@ColumnInfo(name = "id")
-	private int id;
 
 	@SerializedName("deskripsi")
 	@ColumnInfo(name = "deskripsi")
@@ -123,15 +121,9 @@ public class DataItem implements Parcelable {
 	public void setId(int id){
 		this.id = id;
 	}
-	public void setUid(int uid){
-		this.uid = uid;
-	}
 
 	public int getId(){
 		return id;
-	}
-	public int getUid(){
-		return uid;
 	}
 
 	public void setDeskripsi(String deskripsi){

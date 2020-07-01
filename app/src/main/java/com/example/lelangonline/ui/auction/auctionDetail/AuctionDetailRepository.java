@@ -102,7 +102,7 @@ public class AuctionDetailRepository {
 
 
     public Flowable<Auction> fetchFromApi(int page, int size, String item_id) {
-        return mainApi.getAuction(page, size, item_id)
+        return mainApi.getAuction(item_id, page, size)
                 .timeout(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io());
     }

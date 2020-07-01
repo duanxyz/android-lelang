@@ -5,7 +5,7 @@ public enum DataStatus {
     ERROR,
     LOADING,
     LOADED,
-    EMPTY
-
+    SUCCESS,
+    EMPTY,
 }
 
