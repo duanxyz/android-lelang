@@ -3,9 +3,9 @@ package com.example.lelangonline.di;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailViewModel;
 import com.example.lelangonline.ui.details.DetailsViewModel;
 import com.example.lelangonline.ui.login.LoginViewModel;
+import com.example.lelangonline.ui.profile.detail.ProfileDetailViewModel;
 
 import dagger.Binds;
 import dagger.Module;
@@ -24,6 +24,5 @@ public abstract class ActivityViewModelModule {
     @IntoMap
     @ViewModelKey(DetailsViewModel.class)
     abstract ViewModel bindDetailsViewModel(DetailsViewModel detailsViewModel);
-
 
 }

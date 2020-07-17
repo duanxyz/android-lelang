@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.home.HomeViewModel" />
+            type="com.example.lelangonline.ui.main.home.HomeViewModel" />
         <variable
             name="avatarUrl"
             type="String" />

@@ -10,9 +10,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.di.ViewModelKey;
 import com.example.lelangonline.paging.main.barang.BarangDataSourceFactory;
 import com.example.lelangonline.ui.MainRepository;
-import com.example.lelangonline.ui.auction.AuctionAdapter;
-import com.example.lelangonline.ui.auction.AuctionViewModel;
-import com.example.lelangonline.ui.barang.BarangAdapter;
+import com.example.lelangonline.ui.main.auction.AuctionAdapter;
+import com.example.lelangonline.ui.main.auction.AuctionViewModel;
 
 import javax.inject.Named;
 

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:visibility="visible"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/ShapeAppearance.Login">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="DAFTAR"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                app:errorEnabled="true"
+                android:hint="@string/Username"
+                app:boxBackgroundColor="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="@+id/label"
+                app:layout_constraintTop_toBottomOf="@+id/label">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={LoginViewModel.EmailAddress}"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                app:errorEnabled="true"
+                android:hint="@string/email"
+                app:boxBackgroundColor="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="@+id/txtUsername"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={LoginViewModel.EmailAddress}"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="70dp"
+                android:hint="@string/Password"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+                tools:layout_editor_absoluteX="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={LoginViewModel.Password}"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:onClick="@{(v)-> LoginViewModel.onClick(v)}"
+        app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:srcCompat="@drawable/ic_arrorw_forward" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sudah Punya Akun?"
+        app:layout_constraintBottom_toBottomOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="masuk"
+        android:textColor="#fff"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

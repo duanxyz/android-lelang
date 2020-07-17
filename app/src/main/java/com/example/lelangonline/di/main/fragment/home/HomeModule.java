@@ -2,19 +2,12 @@ package com.example.lelangonline.di.main.fragment.home;
 
 import androidx.lifecycle.ViewModel;
 
-import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.di.ViewModelKey;
-import com.example.lelangonline.ui.MainRepository;
-import com.example.lelangonline.ui.home.HomeViewModel;
-
-import javax.inject.Named;
+import com.example.lelangonline.ui.main.home.HomeViewModel;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 import dagger.multibindings.IntoMap;
-import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public abstract class HomeModule {

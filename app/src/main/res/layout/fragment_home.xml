@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:folding-cell="http://schemas.android.com/apk/res-auto">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="avatarUrl"-->
-<!--            type="String" />-->
-<!--        <variable-->
-<!--            name="reqManager"-->
-<!--            type="com.bumptech.glide.RequestManager" />-->
-<!--    </data>-->
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.lelangonline.ui.main.home.HomeViewModel" />
+        <variable
+            name="avatarUrl"
+            type="String" />
+        <variable
+            name="reqManager"
+            type="com.bumptech.glide.RequestManager" />
+    </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
@@ -22,75 +26,216 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.5"
-                    android:background="@color/colorPrimaryDark" />
+                    android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/card1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.5"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Cut"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <com.ramotion.foldingcell.FoldingCell
-                        android:id="@+id/folding_cell"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/textView10"
+                        app:layout_constraintStart_toStartOf="@+id/textView10" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saldo"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/textView9"
+                        app:layout_constraintStart_toStartOf="@+id/textView9" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:textColor="#fff"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.638"
-                        folding-cell:additionalFlipsCount="2"
-                        folding-cell:animationDuration="1300"
-                        folding-cell:backSideColor="#f4f0ff"
-                        folding-cell:cameraHeight="30">
-
-                        <!-- CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than content layout bellow)-->
-
-                        <include
-                            android:id="@+id/content"
-                            layout="@layout/cell_content_layout" />
-
-                        <include
-                            android:id="@+id/title"
-                            layout="@layout/cell_title_layout" />
-
-                        <!-- TITLE (FOLDED) LAYOUT (MUST BE AT LEAST 2x times SMALLER than content layout above) -->
-                    </com.ramotion.foldingcell.FoldingCell>
-                </LinearLayout>
-            </LinearLayout>
+                        app:layout_constraintHorizontal_bias="0.166"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                app:cardBackgroundColor="#C400a74e"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">-->
+
+<!--            </com.google.android.material.card.MaterialCardView>-->
+<!--            <LinearLayout-->
+<!--                android:id="@+id/linearLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginRight="20dp">-->
+
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <com.google.android.material.card.MaterialCardView-->
+<!--                            android:id="@+id/materialCardView3"-->
+<!--                            android:layout_width="100dp"-->
+<!--                            android:layout_height="100dp"-->
+<!--                            android:layout_marginTop="16dp"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            app:cardBackgroundColor="#fff"-->
+<!--                            app:cardElevation="4dp"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:shapeAppearance="@style/ShapeAppearance.CardHome">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="50dp"-->
+<!--                                    android:layout_height="50dp"-->
+<!--                                    android:src="@drawable/ic_setor1" />-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="Setor"-->
+<!--                                    android:textAlignment="center" />-->
+<!--                            </LinearLayout>-->
+
+<!--                        </com.google.android.material.card.MaterialCardView>-->
+
+<!--                        <com.google.android.material.card.MaterialCardView-->
+<!--                            android:id="@+id/materialCardView2"-->
+<!--                            android:layout_width="100dp"-->
+<!--                            android:layout_height="100dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            app:cardBackgroundColor="#fff"-->
+<!--                            app:cardElevation="4dp"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:shapeAppearance="@style/ShapeAppearance.CardHome">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="50dp"-->
+<!--                                    android:layout_height="50dp"-->
+<!--                                    android:src="@drawable/ic_setor" />-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="Tarik"-->
+<!--                                    android:textAlignment="center" />-->
+<!--                            </LinearLayout>-->
+
+<!--                        </com.google.android.material.card.MaterialCardView>-->
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:visibility="gone"-->
+<!--                android:id="@+id/linearLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/colorPrimary"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:background="@color/colorPrimaryDark" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/card1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical" />-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:insetTop="0dp"-->
+<!--                    android:insetBottom="0dp"-->
+<!--                    app:cardBackgroundColor="@color/colorPrimary"-->
+<!--                    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Cut"/>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_weight="1">-->
+
+<!--                    <com.ramotion.foldingcell.FoldingCell-->
+<!--                        android:id="@+id/folding_cell"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintHorizontal_bias="0.0"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        android:visibility="gone"-->
+<!--                        app:layout_constraintVertical_bias="0.638"-->
+<!--                        folding-cell:additionalFlipsCount="2"-->
+<!--                        folding-cell:animationDuration="1300"-->
+<!--                        folding-cell:backSideColor="#f4f0ff"-->
+<!--                        folding-cell:cameraHeight="30">-->
+
+<!--                        &lt;!&ndash; CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than content layout bellow)&ndash;&gt;-->
+
+<!--                        <include-->
+<!--                            android:id="@+id/content"-->
+<!--                            layout="@layout/cell_content_layout" />-->
+
+<!--                        <include-->
+<!--                            android:id="@+id/title"-->
+<!--                            layout="@layout/cell_title_layout" />-->
+
+<!--                        &lt;!&ndash; TITLE (FOLDED) LAYOUT (MUST BE AT LEAST 2x times SMALLER than content layout above) &ndash;&gt;-->
+<!--                    </com.ramotion.foldingcell.FoldingCell>-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

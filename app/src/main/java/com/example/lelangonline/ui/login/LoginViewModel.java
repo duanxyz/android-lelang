@@ -1,6 +1,7 @@
 package com.example.lelangonline.ui.login;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
@@ -46,12 +47,13 @@ public class LoginViewModel extends ViewModel {
 
         LoggedInUser loggedInUser = new LoggedInUser(EmailAddress.getValue(), Password.getValue());
 
+        Log.d("TAG","email :"+EmailAddress.getValue()+" password :"+Password.getValue());
 
         userMutableLiveData.setValue(loggedInUser);
 
     }
 
-    public void setPrefUser(String id, String email, String username, String memberid) {
+    public void setPrefUser(String id, String memberid, String username, String email) {
         editor.putString(Constants.USERID_PREFS, id);
         editor.putString(Constants.EMAIL_PREFS, email);
         editor.putString(Constants.USERNAME_PREFS, username);

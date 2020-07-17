@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
 import com.example.lelangonline.models.auction.DataItem;
-import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailRepository;
+import com.example.lelangonline.ui.auctionDetail.AuctionDetailRepository;
 
 import javax.inject.Inject;
 

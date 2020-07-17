@@ -16,7 +16,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailViewModel" />
+            type="com.example.lelangonline.ui.auctionDetail.AuctionDetailViewModel" />
 
         <variable
             name="position"

@@ -16,7 +16,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.barang.BarangViewModel" />
+            type="com.example.lelangonline.ui.main.barang.BarangViewModel" />
 
         <variable
             name="position"
@@ -78,7 +78,7 @@
                 <ImageView
 
                     android:id="@+id/articleImage"
-                    loadImage="@{dataItem.photo}"
+                    loadImageBarang="@{dataItem.photo}"
                     reqManager="@{requestManage}"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:text="Rp."
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"
                     app:layout_constraintBottom_toTopOf="@+id/articleTitle"
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.initialPrice(dataItem.initialPrice)}"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/articleTitle"
                     app:layout_constraintStart_toEndOf="@+id/rp"

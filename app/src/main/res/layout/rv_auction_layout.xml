@@ -16,7 +16,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.auction.AuctionViewModel" />
+            type="com.example.lelangonline.ui.main.auction.AuctionViewModel" />
 
         <variable
             name="position"
@@ -78,7 +78,7 @@
                 <ImageView
 
                     android:id="@+id/articleImage"
-                    loadImage="@{dataItem.photo}"
+                    loadImageBarang="@{dataItem.photo}"
                     reqManager="@{requestManage}"
                     android:layout_width="0dp"
                     android:layout_height="0dp"

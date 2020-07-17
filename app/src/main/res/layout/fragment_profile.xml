@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="data"
             type="com.example.lelangonline.models.users.DataItem" />
@@ -16,13 +17,13 @@
             type="com.bumptech.glide.RequestManager" />
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.profile.ProfileViewModel" />
+            type="com.example.lelangonline.ui.main.profile.ProfileViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.profile.ProfileFragment">
+        tools:context=".ui.main.profile.ProfileFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefresh"
@@ -90,14 +91,14 @@
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
-                        android:onClick="@{() -> viewModel.openProfile(data)}"
+                        android:onClick="@{()-> viewModel.openProfile(data)}"
                         android:layout_marginBottom="16dp"
                         android:text="Edit Profile"
                         android:textStyle="bold"
-
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView3"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"                    android:textColor="@color/colorPrimary" />
+                        android:textColor="@color/colorPrimary" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -121,7 +122,9 @@
                         android:layout_height="wrap_content"
                         android:background="#fff"
                         android:text="logout"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"                    android:textColor="@color/colorPrimary"
+                        android:onClick="@{()-> viewModel.logout()}"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textColor="@color/colorPrimary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/button"
                         app:layout_constraintHorizontal_bias="0.119"

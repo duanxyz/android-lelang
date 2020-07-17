@@ -1,9 +1,11 @@
 package com.example.lelangonline.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.lelangonline.R;
 import com.example.lelangonline.databinding.ActivityMainBinding;
+import com.example.lelangonline.ui.login.LoginActivity;
 import com.example.lelangonline.utils.Constants;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,6 +36,13 @@ public class MainActivity extends DaggerAppCompatActivity {
     private void killProcess(){
         android.os.Process.killProcess(android.os.Process.myPid());
     }
+
+//    public void logout(){
+//        Intent intent = new Intent(, LoginActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//        finish();
+//    }
 
     @Override
     protected void onDestroy() {

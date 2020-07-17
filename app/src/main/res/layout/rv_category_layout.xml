@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.barang.BarangViewModel" />
+            type="com.example.lelangonline.ui.main.barang.BarangViewModel" />
         <variable
             name="position"
             type="Integer" />
@@ -32,7 +32,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
-            app:cardBackgroundColor="@{position == selected ? @color/colorAccent: @color/dark}"
+            app:cardBackgroundColor="@{position == selected ? @color/colorAccent: @color/black}"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

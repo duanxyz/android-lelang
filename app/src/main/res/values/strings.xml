@@ -5,7 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skip">Skip</string>
     <string name="login_success">login success</string>
-    <string name="login">LOGIN</string>
     <string name="Username">Username</string>
     <string name="Password">Password</string>
     <string name="forgot_your_password">Forgot your password ?</string>
@@ -80,5 +79,7 @@
     <string name="keterangan">Keterangan</string>
     <string name="tidak_ada_riwayat">Tidak ada riwayat</string>
     <string name="daftar_barang_lelang">Daftar Barang Lelang</string>
+    <string name="login">MASUK</string>
+    <string name="email">Email</string>
 
 </resources>

@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.paging.PageKeyedDataSource;
 
 import com.example.lelangonline.models.auction.DataItem;
-import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailRepository;
+import com.example.lelangonline.ui.auctionDetail.AuctionDetailRepository;
 import com.example.lelangonline.utils.DataStatus;
 
 import io.reactivex.disposables.CompositeDisposable;

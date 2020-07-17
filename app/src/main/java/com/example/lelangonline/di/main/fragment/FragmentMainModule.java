@@ -9,10 +9,10 @@ import com.example.lelangonline.di.main.fragment.home.HomeModule;
 import com.example.lelangonline.di.main.fragment.home.HomeScope;
 import com.example.lelangonline.di.main.fragment.profile.ProfileModule;
 import com.example.lelangonline.di.main.fragment.profile.ProfileScope;
-import com.example.lelangonline.ui.auction.AuctionFragment;
-import com.example.lelangonline.ui.barang.BarangFragment;
-import com.example.lelangonline.ui.home.HomeFragment;
-import com.example.lelangonline.ui.profile.ProfileFragment;
+import com.example.lelangonline.ui.main.auction.AuctionFragment;
+import com.example.lelangonline.ui.main.barang.BarangFragment;
+import com.example.lelangonline.ui.main.home.HomeFragment;
+import com.example.lelangonline.ui.main.profile.ProfileFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -37,4 +37,5 @@ public abstract class FragmentMainModule {
     @ProfileScope
     @ContributesAndroidInjector(modules = ProfileModule.class)
     abstract ProfileFragment profileFragment();
+
 }

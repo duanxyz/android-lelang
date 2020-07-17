@@ -9,14 +9,20 @@ import com.example.lelangonline.di.auctionDetail.AuctionDetailsModule;
 import com.example.lelangonline.di.auctionDetail.AuctionDetailsScope;
 import com.example.lelangonline.di.onboarding.OnboardingModule;
 import com.example.lelangonline.di.onboarding.OnboardingScope;
+import com.example.lelangonline.di.profile.detail.ProfileDetailModule;
+import com.example.lelangonline.di.profile.detail.ProfileDetailScope;
 import com.example.lelangonline.di.splash.SplashModule;
 import com.example.lelangonline.di.splash.SplashScope;
+import com.example.lelangonline.di.withdraw.WithdrawModule;
+import com.example.lelangonline.di.withdraw.WithdrawScope;
 import com.example.lelangonline.ui.MainActivity;
-import com.example.lelangonline.ui.auction.auctionDetail.AuctionActivity;
+import com.example.lelangonline.ui.auctionDetail.AuctionActivity;
 import com.example.lelangonline.ui.details.DetailsActivity;
 import com.example.lelangonline.ui.login.LoginActivity;
 import com.example.lelangonline.ui.onboarding.OnboardingActivity;
+import com.example.lelangonline.ui.profile.detail.ProfileActivity;
 import com.example.lelangonline.ui.splash.SplashActivity;
+import com.example.lelangonline.ui.withdraw.WithdrawActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -51,6 +57,14 @@ abstract class ActivityBuilderModule {
     @AuctionDetailsScope
     @ContributesAndroidInjector(modules = AuctionDetailsModule.class)
     abstract AuctionActivity auctionActivity();
+
+    @ProfileDetailScope
+    @ContributesAndroidInjector(modules = ProfileDetailModule.class)
+    abstract ProfileActivity profileActivity();
+
+    @WithdrawScope
+    @ContributesAndroidInjector(modules = WithdrawModule.class)
+    abstract WithdrawActivity withdrawActivity();
 
 
 

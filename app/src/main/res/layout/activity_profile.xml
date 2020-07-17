@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="data"
+            type="com.example.lelangonline.models.users.DataItem" />
+        <variable
+            name="viewModel"
+            type="com.example.lelangonline.ui.profile.detail.ProfileDetailViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.detail.ProfileActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:onClick="@{() -> viewModel.closeArticle()}"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/txtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{data.username}"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername" />
+
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{data.email}"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+            <TextView
+                android:id="@+id/txtNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Lengkap"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
+
+            <EditText
+                android:id="@+id/editNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={data.name}"
+                app:layout_constraintTop_toBottomOf="@+id/txtNama" />
+
+            <TextView
+                android:id="@+id/txtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No. HP"
+                app:layout_constraintTop_toBottomOf="@+id/editNama" />
+
+            <EditText
+                android:id="@+id/editPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={data.phoneNumber}"
+                app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="simpan"
+                android:onClick="@{()-> viewModel.simpan(data)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

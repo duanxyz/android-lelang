@@ -38,8 +38,9 @@ public class MainModule {
 
     @MainScope
     @Provides
-    static MainRepository mainRepositoryInject(MainApi mainApi, CompositeDisposable disposable, NewsDao newsDao, SharedPreferences preferences) {
-        return new MainRepository(mainApi, disposable, newsDao, preferences );
+    static MainRepository mainRepositoryInject(MainApi mainApi, CompositeDisposable disposable,
+                                               NewsDao newsDao, SharedPreferences preferences, SharedPreferences.Editor editor) {
+        return new MainRepository(mainApi, disposable, newsDao, preferences, editor);
     }
 
 }

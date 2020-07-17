@@ -15,17 +15,17 @@ import com.example.lelangonline.network.main.MainApi;
 import com.example.lelangonline.utils.Constants;
 import com.example.lelangonline.utils.DataStatus;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
-import io.reactivex.Observer;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainRepository {
@@ -35,21 +35,28 @@ public class MainRepository {
     private CompositeDisposable disposable;
     private NewsDao newsDao;
     private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     private MutableLiveData<String> avatarImage ;
+    private MutableLiveData<String> username ;
+    private MutableLiveData<String> balance ;
     private MutableLiveData<DataStatus> mutableLiveData;
     private MutableLiveData<com.example.lelangonline.models.users.DataItem> mUser;
-    private MutableLiveData<List> arrayUser;
+    private MutableLiveData<Boolean> seisson = new MutableLiveData<>();
 
 
 
     @Inject
     public MainRepository(MainApi mainApi, CompositeDisposable disposable,
-                          NewsDao newsDao, SharedPreferences preferences) {
+                          NewsDao newsDao, SharedPreferences preferences, SharedPreferences.Editor editor) {
         this.mainApi = mainApi;
         this.disposable = disposable;
         this.newsDao = newsDao;
         this.preferences = preferences;
+        this.editor = editor;
         avatarImage = new MutableLiveData<>();
+        username = new MutableLiveData<>();
+        balance = new MutableLiveData<>();
+        seisson = new MutableLiveData<>();
         mutableLiveData = new MutableLiveData<>();
         mUser = new MutableLiveData<com.example.lelangonline.models.users.DataItem>();
     }
@@ -71,6 +78,8 @@ public class MainRepository {
                         .subscribe(db -> {
                             Log.d("TAG", "removeDB: SUCCESS" );
                             db.deleteBarang();
+                            db.deleteAuction();
+                            db.deleteUser();
                         }, throwable -> Log.d("TAG", "removeDB: ERROR" + throwable))
         );
     }
@@ -92,7 +101,7 @@ public class MainRepository {
 
     @SuppressLint("CheckResult")
     public void fetchFromApi() {
-        String id = preferences.getString(Constants.EMAIL_PREFS, "");
+        String id = preferences.getString(Constants.MEMBERID_PREFS, "");
         mutableLiveData.postValue(DataStatus.LOADING);
         disposable.add(
                 mainApi.fetchMembersById(Integer.parseInt(id))
@@ -122,4 +131,50 @@ public class MainRepository {
         newsDao.insertUser(members.getData());
     }
 
+    @SuppressLint("CheckResult")
+    public void ubahUser(com.example.lelangonline.models.users.DataItem dataItem) {
+        mainApi.changeMembers(dataItem.getId() ,dataItem)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(members -> Log.d("UBAH", "Berhasil" + members.getData()))
+                .doOnError(throwable -> System.err.println("The error message is: " + throwable.getMessage()))
+                .subscribe(members -> {
+                    Log.d("UBAH", "Berhasil" + members.getData());
+                        }, Throwable::printStackTrace
+                );
+//                        Log.d("UBAH", "Berhasil :" + members.getData())
+//                () -> System.out.println("onComplete should never be printed!"));
+//                .subscribe(members -> Log.d("UBAH", "Berhasil" + members), Throwable::printStackTrace);
+    }
+
+    public void clearPreferences(){
+        editor.clear().commit();
+    }
+
+    public void resetStored(){
+        removeDB();
+        clearPreferences();
+        seisson.setValue(true);
+    }
+
+    public LiveData<Boolean> getSeisson(){
+        return seisson;
+    }
+
+    public void getUsername() {
+        username.setValue(preferences.getString(Constants.NAME_PREFS, ""));
+    }
+    public LiveData<String> getUserName() {
+        return username;
+    }
+    public LiveData<String> getbalance() {
+        return balance;
+    }
+
+
+    public void getBalance() {
+        NumberFormat formatter = new DecimalFormat("#,###");
+        String formattedNumber = "Rp."+formatter.format(preferences.getInt(Constants.SALDO_PREFS, 0));
+        balance.setValue(formattedNumber);
+    }
 }

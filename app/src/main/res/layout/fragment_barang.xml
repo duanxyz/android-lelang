@@ -12,7 +12,7 @@
             type="com.bumptech.glide.RequestManager" />
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.barang.BarangViewModel" />
+            type="com.example.lelangonline.ui.main.barang.BarangViewModel" />
     </data>
 
     <FrameLayout

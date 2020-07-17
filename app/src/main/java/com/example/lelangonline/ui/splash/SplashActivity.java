@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.lelangonline.ui.MainActivity;
+import com.example.lelangonline.ui.login.LoginActivity;
 import com.example.lelangonline.ui.onboarding.OnboardingActivity;
 import com.example.lelangonline.utils.Constants;
 
@@ -30,7 +31,7 @@ public class SplashActivity extends DaggerAppCompatActivity {
             startActivity(new Intent(this.getApplicationContext(), MainActivity.class));
             finish();
         }else {
-            startActivity(new Intent(this.getApplicationContext(), OnboardingActivity.class));
+            startActivity(new Intent(this.getApplicationContext(), LoginActivity.class));
             finish();
         }
     }

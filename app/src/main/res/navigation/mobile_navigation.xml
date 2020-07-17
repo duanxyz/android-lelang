@@ -7,25 +7,26 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.lelangonline.ui.home.HomeFragment"
+        android:name="com.example.lelangonline.ui.main.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
  <fragment
         android:id="@+id/navigation_barang"
-        android:name="com.example.lelangonline.ui.barang.BarangFragment"
+        android:name="com.example.lelangonline.ui.main.barang.BarangFragment"
         android:label="Barang"
         tools:layout="@layout/fragment_barang" />
 
     <fragment
         android:id="@+id/navigation_auction"
-        android:name="com.example.lelangonline.ui.auction.AuctionFragment"
+        android:name="com.example.lelangonline.ui.main.auction.AuctionFragment"
         android:label="Lelang"
         tools:layout="@layout/fragment_auction" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.lelangonline.ui.profile.ProfileFragment"
+        android:name="com.example.lelangonline.ui.main.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
 </navigation>

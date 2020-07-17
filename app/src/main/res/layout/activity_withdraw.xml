@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    >
+
+    <data>
+    <variable
+        name="viewModel"
+        type="com.example.lelangonline.ui.withdraw.WithdrawViewModel" />
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.withdraw.WithdrawActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="No Rekening"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/rekening"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.rekening}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Atas Nama"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.nama}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Jumlah Penarikan"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/jumlah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.jumlah}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

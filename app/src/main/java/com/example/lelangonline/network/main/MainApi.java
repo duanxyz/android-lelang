@@ -1,5 +1,6 @@
 package com.example.lelangonline.network.main;
 
+import com.example.lelangonline.data.model.ResponseLogin;
 import com.example.lelangonline.data.model.ResponseMember;
 import com.example.lelangonline.models.Response;
 import com.example.lelangonline.models.auction.Auction;
@@ -15,20 +16,29 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MainApi {
 
     @FormUrlEncoded
-    @POST("auth/login")
+    @POST("login")
     Call<ResponseBody> loginRequest(@Field("email") String email,
                                   @Field("password") String password);
+    @POST("auth/login")
+    Observable<ResponseLogin> login(@Field("email") String email,
+                                    @Field("password") String password);
+
     @GET("members/{id}")
     Call<ResponseMember> memberRequest(@Path("id") int id);
 
     @GET("members")
     Flowable<Members> fetchMembersById(@Query("id") int id);
+
+    @PUT("members/{id}")
+    Flowable<Members> changeMembers(@Path("id") int id,
+                                    @Body com.example.lelangonline.models.users.DataItem user);
 
     //item
     @GET("items")

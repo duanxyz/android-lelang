@@ -10,13 +10,13 @@
     <item
         android:id="@+id/navigation_barang"
         android:title="Daftar Barang"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_item"
         />
 
     <item
         android:id="@+id/navigation_auction"
         android:title="Lelang"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_auction"
         />
 
     <item

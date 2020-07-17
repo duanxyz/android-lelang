@@ -19,7 +19,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailViewModel" />
+            type="com.example.lelangonline.ui.auctionDetail.AuctionDetailViewModel" />
 
     </data>
 
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            tools:context=".ui.auction.auctionDetail.AuctionActivity">
+            tools:context=".ui.auctionDetail.AuctionActivity">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/imageViewContainer"

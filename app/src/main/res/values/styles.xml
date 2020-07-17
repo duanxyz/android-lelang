@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#fff</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="Translucent" parent="Theme.AppCompat.Light.NoActionBar">
@@ -64,10 +64,27 @@
 
     <style name="ShapeAppearance.CardInfo"
         parent="ShapeAppearance.MaterialComponents.MediumComponent">
-<!--        <item name="cornerSizeBottomLeft">76dp</item>-->
+    <!--        <item name="cornerSizeBottomLeft">76dp</item>-->
         <item name="cornerSizeTopRight">76dp</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeBottomLeft">76dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Login"
+        parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <!--        <item name="cornerSizeBottomLeft">76dp</item>-->
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+    </style>
+ <style name="ShapeAppearance.CardHome"
+        parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <!--        <item name="cornerSizeBottomLeft">76dp</item>-->
+        <item name="cornerSizeBottomLeft">40dp</item>
+        <item name="cornerSizeBottomRight">40dp</item>
+        <item name="cornerSizeTopLeft">40dp</item>
+        <item name="cornerSizeTopRight">40dp</item>
     </style>
 
 </resources>

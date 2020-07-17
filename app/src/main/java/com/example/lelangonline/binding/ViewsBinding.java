@@ -26,6 +26,12 @@ public class ViewsBinding {
         requestManager.load(imageUrl).into(imageView);
     }
 
+    @BindingAdapter({"loadImageBarang", "reqManager"})
+    public static void changeBarang(ImageView imageView , String imageUrl,RequestManager requestManager){
+        String url = "http://10.0.3.2:8000/images/items/"+ imageUrl;
+        requestManager.load(url).into(imageView);
+    }
+
 
     @BindingAdapter("openWebView")
     public static void openArticle(WebView webView, String link){

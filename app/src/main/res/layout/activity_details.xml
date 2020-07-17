@@ -49,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/articleDate">
 
             <ImageView
-                loadImage="@{item.photo}"
+                loadImageBarang="@{item.photo}"
                 reqManager="@{reqManager}"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"

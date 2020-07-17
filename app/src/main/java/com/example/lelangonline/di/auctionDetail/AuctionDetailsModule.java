@@ -7,17 +7,14 @@ import androidx.lifecycle.ViewModel;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.database.NewsDao;
 import com.example.lelangonline.database.saved.SavedDao;
 import com.example.lelangonline.di.ViewModelKey;
 import com.example.lelangonline.network.main.MainApi;
 import com.example.lelangonline.paging.auction.AuctionDataSourceFactory;
-import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailRepository;
-import com.example.lelangonline.ui.auction.auctionDetail.AuctionDetailViewModel;
-import com.example.lelangonline.ui.auction.auctionDetail.bid.BidAdapter;
-
-import javax.inject.Named;
+import com.example.lelangonline.ui.auctionDetail.AuctionDetailRepository;
+import com.example.lelangonline.ui.auctionDetail.AuctionDetailViewModel;
+import com.example.lelangonline.ui.auctionDetail.bid.BidAdapter;
 
 import dagger.Binds;
 import dagger.Module;

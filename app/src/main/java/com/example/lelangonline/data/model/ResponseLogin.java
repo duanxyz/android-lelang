@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponseLogin{
 
-//	@SerializedName("permissions")
-//	private List<String> permissions;
+	@SerializedName("permissions")
+	private List<String> permissions;
 
-//	@SerializedName("roles")
-//	private List<String> roles;
+	@SerializedName("roles")
+	private List<String> roles;
 
 	@SerializedName("id")
 	private int id;
 
-//	@SerializedName("avatar")
-//	private String avatar;
+	@SerializedName("avatar")
+	private String avatar;
 
 	@SerializedName("email")
 	private String email;
@@ -23,21 +23,21 @@ public class ResponseLogin{
 	@SerializedName("username")
 	private String username;
 
-//	public void setPermissions(List<String> permissions){
-//		this.permissions = permissions;
-//	}
-//
-//	public List<String> getPermissions(){
-//		return permissions;
-//	}
-//
-//	public void setRoles(List<String> roles){
-//		this.roles = roles;
-//	}
-//
-//	public List<String> getRoles(){
-//		return roles;
-//	}
+	public void setPermissions(List<String> permissions){
+		this.permissions = permissions;
+	}
+
+	public List<String> getPermissions(){
+		return permissions;
+	}
+
+	public void setRoles(List<String> roles){
+		this.roles = roles;
+	}
+
+	public List<String> getRoles(){
+		return roles;
+	}
 
 	public void setId(int id){
 		this.id = id;
@@ -47,13 +47,13 @@ public class ResponseLogin{
 		return id;
 	}
 
-//	public void setAvatar(String avatar){
-//		this.avatar = avatar;
-//	}
-//
-//	public String getAvatar(){
-//		return avatar;
-//	}
+	public void setAvatar(String avatar){
+		this.avatar = avatar;
+	}
+
+	public String getAvatar(){
+		return avatar;
+	}
 
 	public void setEmail(String email){
 		this.email = email;
@@ -75,10 +75,10 @@ public class ResponseLogin{
  	public String toString(){
 		return 
 			"ResponseLogin{" + 
-//			"permissions = '" + permissions + '\'' +
-//			",roles = '" + roles + '\'' +
+			"permissions = '" + permissions + '\'' +
+			",roles = '" + roles + '\'' +
 			",id = '" + id + '\'' + 
-//			",avatar = '" + avatar + '\'' + 
+			",avatar = '" + avatar + '\'' +
 			",email = '" + email + '\'' +
 			",username = '" + username + '\'' + 
 			"}";

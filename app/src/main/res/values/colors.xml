@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#26a69a</color>
-    <color name="colorPrimaryDark">#00766c</color>
-    <color name="colorAccent">#64d8cb</color>
+    <color name="colorPrimary">#00a74e</color>
+    <color name="colorPrimaryDark">#007722</color>
+    <color name="colorAccent">#55da7c</color>
+    <color name="bgIcon">#7500a74e</color>
 <!--    color fedding-call-->
     <color name="bgBackSideColor">#f4f0ff</color>
     <color name="bgTitleLeft">#594691</color>
@@ -16,7 +17,7 @@
     <color name="mainTextColor">#343d43</color>
     <color name="btnRequest">#ffbf12</color>
     <color name="white">#FFFF</color>
-    <color name="black">#000</color>
+    <color name="black">#004E43</color>
     <color name="dark">#38384C</color>
     <color name="silver">#dddddd</color>
 
