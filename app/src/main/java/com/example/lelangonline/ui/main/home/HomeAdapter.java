@@ -1,5 +1,6 @@
 package com.example.lelangonline.ui.main.home;
 
+<<<<<<< HEAD
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -52,4 +53,7 @@ public class HomeAdapter extends PagedListAdapter<Balance, HomeAdapter.MainViewH
         this.homeViewModel = viewModel;
     }
 
+=======
+class HomeAdapter {
+>>>>>>> b1ad87c... error
 }
