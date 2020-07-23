@@ -5,6 +5,8 @@ import com.example.lelangonline.data.model.ResponseMember;
 import com.example.lelangonline.models.Response;
 import com.example.lelangonline.models.auction.Auction;
 import com.example.lelangonline.models.auction.DataItem;
+import com.example.lelangonline.models.balance.Balance;
+import com.example.lelangonline.models.balance.ResponseBalance;
 import com.example.lelangonline.models.users.Members;
 
 import io.reactivex.Flowable;
@@ -56,6 +58,12 @@ public interface MainApi {
     Flowable<Auction> getAuction(@Query("item_id") String item_id,
                                  @Query("page") int page,
                                  @Query("limit") int size);
+
+    //balance
+    @GET("history")
+    Flowable<ResponseBalance> getBalance(@Query("id") String id,
+                                         @Query("page") int page,
+                                         @Query("limit") int size);
 
 
 }

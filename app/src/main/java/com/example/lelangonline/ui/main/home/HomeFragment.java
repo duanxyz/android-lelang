@@ -7,18 +7,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.R;
 import com.example.lelangonline.ViewModelProviderFactory;
 import com.example.lelangonline.databinding.FragmentHomeBinding;
-import com.ramotion.foldingcell.FoldingCell;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -38,13 +39,17 @@ public class HomeFragment extends DaggerFragment {
     @Inject
     RequestManager requestManager;
     @Inject
+    LinearLayoutManager layoutManager;
+    @Inject
+    HomeAdapter  homeAdapter;
+    @Inject
     ConnectivityManager connectivityManager;
-    private FoldingCell foldingCell;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeViewModel = new ViewModelProvider(this, providerFactory).get(HomeViewModel.class);
+        homeViewModel.fetchData();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -59,24 +64,58 @@ public class HomeFragment extends DaggerFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        foldingCell();
+        initRecyclersView();
         initRefreshListeners();
-        avatarImageTitle();
-        setUsername();
-        setSaldo();
-//        avatarImageContent();
+        observeObservers();
     }
 
-    private void setSaldo() {
-        homeViewModel.balance().observe(getViewLifecycleOwner(), s -> {
-            fragmentHomeBinding.textView9.setText(s);
+    private void observeObservers() {
+        homeViewModel.getAvatar().observe(getViewLifecycleOwner(), avatar -> {
+            fragmentHomeBinding.setAvatarUrl(avatar);
+            fragmentHomeBinding.setReqManager(requestManager.setDefaultRequestOptions(requestOptions.error(R.drawable.avatar)));
+            fragmentHomeBinding.executePendingBindings();
         });
-    }
 
-    private void setUsername() {
         homeViewModel.Username().observe(getViewLifecycleOwner(), s -> {
-            fragmentHomeBinding.textView8.setText(s);
+            fragmentHomeBinding.username.setText(s);
         });
+
+        homeViewModel.balance().observe(getViewLifecycleOwner(), s -> {
+            fragmentHomeBinding.balance.setText(s);
+        });
+
+        homeViewModel.getItemPagedList().observe(getViewLifecycleOwner(), balances -> {
+            if (balances != null){
+                homeAdapter.submitList(balances);
+                fragmentHomeBinding.transactionRV.scrollToPosition(0);
+            }
+        });
+        homeViewModel.getDataStatus().observe(getViewLifecycleOwner(), dataStatus -> {
+            if (dataStatus != null) {
+                switch (dataStatus) {
+                    case ERROR:
+                        stopSwipeRefresh();
+//                        stopShimmer();
+                        fragmentHomeBinding.transactionRV.setVisibility(View.INVISIBLE);
+//                        fragmentHomeBinding.noInternetContainer.getRoot().setVisibility(View.VISIBLE);
+                        break;
+                    case LOADING:
+//                        fragmentHomeBinding.shimmerLayout.startShimmer();
+                        break;
+                    case LOADED:
+                        stopSwipeRefresh();
+//                        stopShimmer();
+                        fragmentHomeBinding.transactionRV.setVisibility(View.VISIBLE);
+//                        fragmentHomeBinding.noInternetContainer.getRoot().setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    private void initRecyclersView() {
+        homeAdapter.setViewModel(homeViewModel);
+        fragmentHomeBinding.transactionRV.setLayoutManager(layoutManager);
+        fragmentHomeBinding.transactionRV.setAdapter(homeAdapter);
     }
 
     private void initRefreshListeners() {
@@ -87,39 +126,12 @@ public class HomeFragment extends DaggerFragment {
         fragmentHomeBinding.swipeRefresh.setRefreshing(false);
     }
 
-//    private void avatarImageContent() {
-//        homeViewModel.getAvatar().observe(getViewLifecycleOwner(), avatar -> {
-//            fragmentHomeBinding.content.setAvatarUrl1(avatar);
-//            fragmentHomeBinding.content.setReqManager1(requestManager.setDefaultRequestOptions(requestOptions.error(R.drawable.avatar)));
-//            fragmentHomeBinding.content.executePendingBindings();
-//        });
-//    }
-
-    private void avatarImageTitle() {
-        homeViewModel.getAvatar().observe(getViewLifecycleOwner(), avatar -> {
-            fragmentHomeBinding.setAvatarUrl(avatar);
-            fragmentHomeBinding.setReqManager(requestManager.setDefaultRequestOptions(requestOptions.error(R.drawable.avatar)));
-            fragmentHomeBinding.executePendingBindings();
-        });
-    }
-
-//    private void foldingCell() {
-//        foldingCell = fragmentHomeBinding.foldingCell;
-//        foldingCell.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                foldingCell.toggle(false);
-//            }
-//        });
-//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK && requestCode == 101) {
             homeViewModel.refreshData();
-//            avatarImageContent();
-            avatarImageTitle();
         }
     }
 
@@ -127,6 +139,5 @@ public class HomeFragment extends DaggerFragment {
     public void onDestroyView() {
         super.onDestroyView();
        fragmentHomeBinding = null;
-       foldingCell = null;
     }
 }

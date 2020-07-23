@@ -25,45 +25,6 @@ import io.reactivex.disposables.CompositeDisposable;
 @Module
 public abstract class BarangModule {
 
-//    @Named("vertical")
-//    @BarangScope
-//    @Provides
-//    static LinearLayoutManager provideVerticalLayoutManager(Application application) {
-//        return new LinearLayoutManager(application, LinearLayoutManager.VERTICAL, false);
-//    }
-//
-//    @Named("horizontal")
-//    @BarangScope
-//    @Provides
-//    static LinearLayoutManager provideLinearLayoutManager(Application application) {
-//        return new LinearLayoutManager(application, LinearLayoutManager.HORIZONTAL, false);
-//    }
-//
-//    @Provides
-//    @BarangScope
-//    static BarangDataSourceFactory provideBarangDataSourceFactory(CompositeDisposable disposable , MainApi mainApi) {
-//        return new BarangDataSourceFactory(mainApi, disposable);
-//    }
-//
-//    @BarangScope
-//    @Provides
-//    static BarangMainAdapter provideMainAdapter(RequestManager requestManager, @Named("defaultRequestOption") RequestOptions requestOptions) {
-//        return new BarangMainAdapter(requestManager, requestOptions);
-//    }
-//
-//    @BarangScope
-//    @Provides
-//    static BarangItemAdapter provideBarangAdapter() {
-//        return new BarangItemAdapter();
-//    }
-//
-//
-//
-//    @Binds
-//    @IntoMap
-//    @BarangScope
-//    @ViewModelKey(BarangViewModel.class)
-//    abstract ViewModel bindHomeViewModel(BarangViewModel BarangViewModel);
     @Named("vertical")
     @BarangScope
     @Provides

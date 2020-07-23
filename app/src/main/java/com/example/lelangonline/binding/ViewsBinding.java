@@ -11,6 +11,8 @@ import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.RequestManager;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -69,8 +71,8 @@ public class ViewsBinding {
 
     @BindingAdapter("dateFormat")
     public static void getTodayDetailsDate(TextView textView, String date) {
-        SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'", Locale.getDefault());
-        SimpleDateFormat output = new SimpleDateFormat("dd MMMM, hh:mm a", Locale.getDefault());
+        SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat output = new SimpleDateFormat("yyyy MM dd, hh:mm");
         Date d = null;
         try {
             d = input.parse(date);
@@ -82,4 +84,11 @@ public class ViewsBinding {
         else
             textView.setText(date);
     }
+
+    @BindingAdapter("curencyFormat")
+    public static void curencyFormat(TextView textView, int i){
+        NumberFormat formatter = new DecimalFormat("#,###");
+        textView.setText(String.format("Rp. %s", formatter.format(i)));
+    }
+
 }

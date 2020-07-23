@@ -80,11 +80,11 @@ public class AuctionDetailViewModel extends ViewModel {
         }
     }
 
-    public String offer(int offer){
-        NumberFormat formatter = new DecimalFormat("#,###");
-        String formattedNumber = ": Rp. "+formatter.format(offer);
-        return formattedNumber;
-    }
+//    public String offer(int offer){
+//        NumberFormat formatter = new DecimalFormat("#,###");
+//        String formattedNumber = ": Rp. "+formatter.format(offer);
+//        return formattedNumber;
+//    }
 
 
     public void closeAuction(){
@@ -99,8 +99,7 @@ public class AuctionDetailViewModel extends ViewModel {
 
     public String initialPrice(int price){
         NumberFormat formatter = new DecimalFormat("#,###");
-        String formattedNumber = "Harga Awal : Rp."+formatter.format(price);
-        return formattedNumber;
+        return String.format("Harga Awal : Rp.%s", formatter.format(price));
 
     }
     LiveData<Boolean> getCloseItem() {

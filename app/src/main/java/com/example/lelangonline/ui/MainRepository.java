@@ -10,6 +10,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.lelangonline.database.NewsDao;
 import com.example.lelangonline.models.DataItem;
 import com.example.lelangonline.models.Response;
+import com.example.lelangonline.models.balance.Balance;
+import com.example.lelangonline.models.balance.ResponseBalance;
 import com.example.lelangonline.models.users.Members;
 import com.example.lelangonline.network.main.MainApi;
 import com.example.lelangonline.utils.Constants;
@@ -22,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -176,5 +179,12 @@ public class MainRepository {
         NumberFormat formatter = new DecimalFormat("#,###");
         String formattedNumber = "Rp."+formatter.format(preferences.getInt(Constants.SALDO_PREFS, 0));
         balance.setValue(formattedNumber);
+    }
+
+    public Flowable<ResponseBalance> fetchBalanceFromApi(int page, int size) {
+        String id = preferences.getString(Constants.MEMBERID_PREFS, "");
+        return mainApi.getBalance(id, page, size)
+                .timeout(3, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io());
     }
 }

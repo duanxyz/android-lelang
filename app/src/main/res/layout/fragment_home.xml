@@ -26,216 +26,163 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView2"
+            <ImageView
+                android:id="@+id/imageView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/colorPrimary"
-                app:layout_constraintTop_toTopOf="parent">
+                android:background="@drawable/group_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/bell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bell"
+                app:layout_constraintBottom_toTopOf="@+id/username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.865"
+                app:layout_constraintStart_toEndOf="@+id/username"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/profil_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/profil_pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Muhammad Ridwan"
+                android:textColor="#FFFBFB"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/profil_pic"
+                app:layout_constraintStart_toEndOf="@+id/profil_pic"
+                app:layout_constraintTop_toTopOf="@+id/profil_pic" />
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="Rp.000,000,000"
+                android:textColor="#FFFBFB"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="@+id/username"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/profil_pic"
+                app:layout_constraintTop_toBottomOf="@+id/profil_pic"
+                app:layout_constraintVertical_bias="0.167" />
+
+            <TextView
+                android:id="@+id/txtBalance"
+                android:layout_width="58dp"
+                android:layout_height="21dp"
+                android:text="Balance"
+                android:textColor="#FFFBFB"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="@+id/balance"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/balance"
+                app:layout_constraintTop_toBottomOf="@+id/balance"
+                app:layout_constraintVertical_bias="0.133" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rectangle_7a"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtBalance">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/send_requst"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="11dp"
+                        android:text="Send And Request"
+                        android:textColor="#313030"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/textView10"
-                        app:layout_constraintStart_toStartOf="@+id/textView10" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView10"
+                    <ImageButton
+                        android:id="@+id/send"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Saldo"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/textView9"
-                        app:layout_constraintStart_toStartOf="@+id/textView9" />
+                        android:layout_marginStart="44dp"
+                        android:layout_marginTop="52dp"
+                        android:background="@drawable/send"
+                        app:layout_constraintEnd_toEndOf="@+id/send_requst"
+                        app:layout_constraintHorizontal_bias="0.066"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/send_requst" />
 
-                    <TextView
-                        android:id="@+id/textView9"
+                    <ImageButton
+                        android:id="@+id/request"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:textColor="#fff"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/request"
+                        app:layout_constraintBottom_toBottomOf="@+id/send"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.606"
+                        app:layout_constraintStart_toEndOf="@+id/send"
+                        app:layout_constraintTop_toTopOf="@+id/send" />
+
+                    <TextView
+                        android:id="@+id/txtTransaction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Transaction"
+                        android:textColor="#313030"
                         android:textSize="24sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/send"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/send" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/transactionRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.166"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTransaction" />
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                app:cardBackgroundColor="#C400a74e"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">-->
-
-<!--            </com.google.android.material.card.MaterialCardView>-->
-<!--            <LinearLayout-->
-<!--                android:id="@+id/linearLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_weight="0.5"-->
-<!--                    android:layout_marginLeft="20dp"-->
-<!--                    android:layout_marginRight="20dp">-->
-
-<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content">-->
-
-<!--                        <com.google.android.material.card.MaterialCardView-->
-<!--                            android:id="@+id/materialCardView3"-->
-<!--                            android:layout_width="100dp"-->
-<!--                            android:layout_height="100dp"-->
-<!--                            android:layout_marginTop="16dp"-->
-<!--                            android:layout_marginLeft="20dp"-->
-<!--                            app:cardBackgroundColor="#fff"-->
-<!--                            app:cardElevation="4dp"-->
-<!--                            app:layout_constraintStart_toStartOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent"-->
-<!--                            app:shapeAppearance="@style/ShapeAppearance.CardHome">-->
-
-<!--                            <LinearLayout-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:orientation="vertical">-->
-
-<!--                                <ImageView-->
-<!--                                    android:layout_width="50dp"-->
-<!--                                    android:layout_height="50dp"-->
-<!--                                    android:src="@drawable/ic_setor1" />-->
-
-<!--                                <TextView-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:text="Setor"-->
-<!--                                    android:textAlignment="center" />-->
-<!--                            </LinearLayout>-->
-
-<!--                        </com.google.android.material.card.MaterialCardView>-->
-
-<!--                        <com.google.android.material.card.MaterialCardView-->
-<!--                            android:id="@+id/materialCardView2"-->
-<!--                            android:layout_width="100dp"-->
-<!--                            android:layout_height="100dp"-->
-<!--                            android:layout_marginRight="20dp"-->
-<!--                            app:cardBackgroundColor="#fff"-->
-<!--                            app:cardElevation="4dp"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            app:layout_constraintEnd_toEndOf="parent"-->
-<!--                            app:shapeAppearance="@style/ShapeAppearance.CardHome">-->
-
-<!--                            <LinearLayout-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:orientation="vertical">-->
-
-<!--                                <ImageView-->
-<!--                                    android:layout_width="50dp"-->
-<!--                                    android:layout_height="50dp"-->
-<!--                                    android:src="@drawable/ic_setor" />-->
-
-<!--                                <TextView-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:text="Tarik"-->
-<!--                                    android:textAlignment="center" />-->
-<!--                            </LinearLayout>-->
-
-<!--                        </com.google.android.material.card.MaterialCardView>-->
-<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:visibility="gone"-->
-<!--                android:id="@+id/linearLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:background="@color/colorPrimary"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_weight="0.5"-->
-<!--                    android:background="@color/colorPrimaryDark" />-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/card1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="vertical" />-->
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <com.google.android.material.card.MaterialCardView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_weight="0.5"-->
-<!--                    android:insetTop="0dp"-->
-<!--                    android:insetBottom="0dp"-->
-<!--                    app:cardBackgroundColor="@color/colorPrimary"-->
-<!--                    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Cut"/>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_weight="1">-->
-
-<!--                    <com.ramotion.foldingcell.FoldingCell-->
-<!--                        android:id="@+id/folding_cell"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.0"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        android:visibility="gone"-->
-<!--                        app:layout_constraintVertical_bias="0.638"-->
-<!--                        folding-cell:additionalFlipsCount="2"-->
-<!--                        folding-cell:animationDuration="1300"-->
-<!--                        folding-cell:backSideColor="#f4f0ff"-->
-<!--                        folding-cell:cameraHeight="30">-->
-
-<!--                        &lt;!&ndash; CONTENT (UNFOLDED) LAYOUT (MUST BE AT LEAST 2x times BIGGER than content layout bellow)&ndash;&gt;-->
-
-<!--                        <include-->
-<!--                            android:id="@+id/content"-->
-<!--                            layout="@layout/cell_content_layout" />-->
-
-<!--                        <include-->
-<!--                            android:id="@+id/title"-->
-<!--                            layout="@layout/cell_title_layout" />-->
-
-<!--                        &lt;!&ndash; TITLE (FOLDED) LAYOUT (MUST BE AT LEAST 2x times SMALLER than content layout above) &ndash;&gt;-->
-<!--                    </com.ramotion.foldingcell.FoldingCell>-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

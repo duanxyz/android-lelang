@@ -48,11 +48,11 @@ public class AuctionViewModel extends ViewModel {
         return barangDetails;
     }
 
-    public String initialPrice(int price){
-        NumberFormat formatter = new DecimalFormat("#,###");
-        String formattedNumber = formatter.format(price);
-        return formattedNumber;
-    }
+//    public String initialPrice(int price){
+//        NumberFormat formatter = new DecimalFormat("#,###");
+//        String formattedNumber = formatter.format(price);
+//        return formattedNumber;
+//    }
 
     public void refreshData() {
         if (itemPagedList.getValue() != null) {

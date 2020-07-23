@@ -27,7 +27,7 @@ public class BarangViewModel extends ViewModel {
     private BarangDataSourceFactory barangFactory;
     private PagedList.Config config;
     private MutableLiveData<DataStatus> dataStatus;
-    private LiveData<DataStatus> newsData;
+    private LiveData<DataStatus> itemsData;
     private MutableLiveData<DataItem> barangDetails;
     private MutableLiveData<Integer> selectedItem;
 
@@ -42,7 +42,7 @@ public class BarangViewModel extends ViewModel {
 
     void fetchBarangData(){
         itemPagedList = new LivePagedListBuilder(barangFactory, config).build();
-        newsData = Transformations.switchMap(barangFactory.getMutableLiveData(), BarangDataSource::getMutableLiveData);
+        itemsData = Transformations.switchMap(barangFactory.getMutableLiveData(), BarangDataSource::getMutableLiveData);
     }
 
     void refreshData() {
@@ -64,7 +64,7 @@ public class BarangViewModel extends ViewModel {
     }
 
     LiveData<DataStatus> getDataStatus() {
-        return newsData;
+        return itemsData;
     }
 
     LiveData<PagedList<DataItem>> getItemPagedList() {
