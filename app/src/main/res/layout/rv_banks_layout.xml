@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="bank"
+            type="com.example.lelangonline.models.banks.Banks" />
+        <variable
+            name="viewModel"
+            type="com.example.lelangonline.ui.deposit.DepositViewModel" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="requestManage"
+            type="com.bumptech.glide.RequestManager" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp">
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.openBank(bank)}"
+            android:text="@{bank.bankName}"
+            android:textAlignment="viewStart"
+            android:textColor="#000"
+            android:textSize="14sp"
+            loadImageBank="@{bank.bankName}" />
+    </androidx.cardview.widget.CardView>
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+</layout>

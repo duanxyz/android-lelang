@@ -1,56 +1,401 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
     <variable
         name="viewModel"
         type="com.example.lelangonline.ui.withdraw.WithdrawViewModel" />
 </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.withdraw.WithdrawActivity">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView8"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="No Rekening"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/rekening"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:onClick="@{()-> viewModel.close()}"
+                    android:src="@drawable/ic_arrow_back"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView10"
+                    app:layout_constraintEnd_toStartOf="@+id/textView9"
+                    app:layout_constraintHorizontal_bias="0.055"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Tarik SALDO"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Tarik ke Rekening Bank"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColorHint="@color/colorPrimary"
+            android:hint="Masukkan Rekening Bank"
+            app:icon="@drawable/ic_add_circle"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:layout_constraintStart_toStartOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutNominal"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView8">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.rekening}"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Atas Nama"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nama"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iconBank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/bni" />
+
+                    <TextView
+                        android:id="@+id/bankAndNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:textSize="22sp" />
+
+                    <Button
+                        android:id="@+id/closeLayoutNominal"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:drawableEnd="@drawable/ic_close_circle" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.nama}"/>
+                app:layout_constraintTop_toBottomOf="@+id/cardView9">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Jumlah Penarikan"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/jumlah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={viewModel.jumlah}"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="MASUKAN NOMINAL" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/txtNominal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textColor="#575555"
+                        android:textSize="35sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/inputNominal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="40dp"
+                        android:text="@={viewModel.txtNominal}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight=".2"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("7")}'
+                            android:text="7"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("8")}'
+                            android:text="8"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("9")}'
+                            android:text="9"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <!--                        <com.google.android.material.button.MaterialButton-->
+                        <!--                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="0.25"-->
+                        <!--                            android:onClick='@{()-> viewModel.setNominal("+")}'-->
+                        <!--                            android:text="+"-->
+                        <!--                            android:textSize="40sp"-->
+                        <!--                            app:backgroundTint="#6F00A74E"-->
+                        <!--                            app:strokeColor="#A600A74E"-->
+                        <!--                            app:strokeWidth="2dp" />-->
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("4")}'
+                            android:text="4"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("5")}'
+                            android:text="5"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("6")}'
+                            android:text="6"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <!--                        <com.google.android.material.button.MaterialButton-->
+                        <!--                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="0.25"-->
+                        <!--                            android:text="-"-->
+                        <!--                            android:onClick='@{()-> viewModel.setNominal("-")}'-->
+                        <!--                            android:textSize="40sp"-->
+                        <!--                            app:backgroundTint="#6F00A74E"-->
+                        <!--                            app:strokeColor="#A600A74E"-->
+                        <!--                            app:strokeWidth="2dp" />-->
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("1")}'
+                            android:text="1"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("2")}'
+                            android:text="2"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("3")}'
+                            android:text="3"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <!--                        <com.google.android.material.button.MaterialButton-->
+                        <!--                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="0.25"-->
+                        <!--                            app:backgroundTint="#6F00A74E"-->
+                        <!--                            app:icon="@drawable/ic_close_circle"-->
+                        <!--                            android:onClick='@{()-> viewModel.setNominal("*")}'-->
+                        <!--                            android:textSize="40sp"-->
+                        <!--                            app:iconGravity="textStart"-->
+                        <!--                            app:strokeColor="#A600A74E"-->
+                        <!--                            app:strokeWidth="2dp" />-->
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("0")}'
+                            android:text="0"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("000")}'
+                            android:text="000"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.25"
+                            android:onClick='@{()-> viewModel.setNominal("hapus")}'
+                            android:textSize="40sp"
+                            app:icon="@drawable/ic_backspase_arrow"
+                            app:iconGravity="textStart"
+                            app:iconTint="#000" />
+
+                        <!--                        <com.google.android.material.button.MaterialButton-->
+                        <!--                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="0.25"-->
+                        <!--                            android:onClick='@{()-> viewModel.setNominal("/")}'-->
+                        <!--                            android:text=":"-->
+                        <!--                            android:textSize="40sp"-->
+                        <!--                            app:backgroundTint="#6F00A74E"-->
+                        <!--                            app:strokeColor="#A600A74E"-->
+                        <!--                            app:strokeWidth="2dp" />-->
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/atur"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="Atur jumlah" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

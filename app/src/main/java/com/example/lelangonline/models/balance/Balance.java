@@ -8,11 +8,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.ColumnInfo;
 import androidx.room.PrimaryKey;
 
-<<<<<<< HEAD
-import com.example.lelangonline.models.auction.DataItem;
-=======
-import com.example.lelangonline.models.auction.Auction;
->>>>>>> b1ad87c... error
 import com.google.gson.annotations.SerializedName;
 
 public class Balance implements Parcelable {
@@ -34,19 +29,11 @@ public class Balance implements Parcelable {
 	private String updatedAt;
 
 	@SerializedName("created_at")
-<<<<<<< HEAD
 	@ColumnInfo( name = "created_at")
 	private String createdAt;
 
 	@SerializedName("ending_balance")
 	@ColumnInfo( name = "ending_balance")
-=======
-	@ColumnInfo(name = "created_at")
-	private String createdAt;
-
-	@SerializedName("ending_balance")
-	@ColumnInfo(name = "ending_balance")
->>>>>>> b1ad87c... error
 	private int endingBalance;
 
 	@PrimaryKey

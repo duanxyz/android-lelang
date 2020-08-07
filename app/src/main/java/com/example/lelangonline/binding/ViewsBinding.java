@@ -1,15 +1,20 @@
 package com.example.lelangonline.binding;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.RequestManager;
+import com.example.lelangonline.R;
+import com.google.android.material.button.MaterialButton;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -29,9 +34,25 @@ public class ViewsBinding {
     }
 
     @BindingAdapter({"loadImageBarang", "reqManager"})
-    public static void changeBarang(ImageView imageView , String imageUrl,RequestManager requestManager){
+    public static void changeImageBarang(ImageView imageView , String imageUrl,RequestManager requestManager){
         String url = "http://10.0.3.2:8000/images/items/"+ imageUrl;
         requestManager.load(url).into(imageView);
+    }
+
+    @BindingAdapter({"loadImageBank"})
+    public static void changeImageBank(Button button , String name){
+        Drawable icon;
+        if (name != null){
+            switch (name){
+                case "BNI":
+                   button.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.bni, 0, 0, 0);
+                   break;
+                case "BCA":
+                    button.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.bca, 0, 0, 0);
+                    break;
+
+            }
+        }
     }
 
 

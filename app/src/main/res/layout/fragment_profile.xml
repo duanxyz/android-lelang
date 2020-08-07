@@ -82,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="@{data.status}"
+                        curencyFormat="@{data.saldo}"
                         app:layout_constraintBottom_toTopOf="@+id/textView5"
                         app:layout_constraintStart_toEndOf="@+id/textView3"
                         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -126,22 +126,21 @@
                         style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:textColor="@color/colorPrimary"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button"
                         app:layout_constraintHorizontal_bias="0.119"
                         app:layout_constraintStart_toStartOf="parent" />
 
-                    <TextView
-                        android:id="@+id/button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#ffff"
-                        android:text="verison"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/button"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="#ffff"-->
+<!--                        android:text="verison"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

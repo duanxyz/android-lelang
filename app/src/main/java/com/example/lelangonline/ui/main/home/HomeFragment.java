@@ -20,6 +20,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.lelangonline.R;
 import com.example.lelangonline.ViewModelProviderFactory;
 import com.example.lelangonline.databinding.FragmentHomeBinding;
+import com.example.lelangonline.ui.deposit.DepositActivity;
+import com.example.lelangonline.ui.withdraw.WithdrawActivity;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -67,6 +69,26 @@ public class HomeFragment extends DaggerFragment {
         initRecyclersView();
         initRefreshListeners();
         observeObservers();
+        deposit();
+        withdraw();
+    }
+
+    private void withdraw() {
+        fragmentHomeBinding.request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), WithdrawActivity.class));
+            }
+        });
+    }
+
+    private void deposit() {
+        fragmentHomeBinding.send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DepositActivity.class));
+            }
+        });
     }
 
     private void observeObservers() {

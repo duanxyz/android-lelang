@@ -1,5 +1,9 @@
 package com.example.lelangonline.di;
 
+import com.example.lelangonline.di.deposits.DepositModule;
+import com.example.lelangonline.di.deposits.DepositScope;
+import com.example.lelangonline.di.deposits.transfer.TransferModule;
+import com.example.lelangonline.di.deposits.transfer.TransferScope;
 import com.example.lelangonline.di.login.LoginModule;
 import com.example.lelangonline.di.login.LoginScope;
 import com.example.lelangonline.di.main.MainModule;
@@ -17,6 +21,8 @@ import com.example.lelangonline.di.withdraw.WithdrawModule;
 import com.example.lelangonline.di.withdraw.WithdrawScope;
 import com.example.lelangonline.ui.MainActivity;
 import com.example.lelangonline.ui.auctionDetail.AuctionActivity;
+import com.example.lelangonline.ui.deposit.DepositActivity;
+import com.example.lelangonline.ui.deposit.transfer.TransferActivity;
 import com.example.lelangonline.ui.details.DetailsActivity;
 import com.example.lelangonline.ui.login.LoginActivity;
 import com.example.lelangonline.ui.onboarding.OnboardingActivity;
@@ -65,6 +71,14 @@ abstract class ActivityBuilderModule {
     @WithdrawScope
     @ContributesAndroidInjector(modules = WithdrawModule.class)
     abstract WithdrawActivity withdrawActivity();
+
+    @DepositScope
+    @ContributesAndroidInjector(modules = DepositModule.class)
+    abstract DepositActivity depositActivity();
+
+    @TransferScope
+    @ContributesAndroidInjector(modules = TransferModule.class)
+    abstract TransferActivity transferActivity();
 
 
 

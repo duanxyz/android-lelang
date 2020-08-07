@@ -7,6 +7,10 @@
         <item name="colorPrimaryDark">#fff</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="Theme_Dialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
     <style name="Translucent" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">#0288D1</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -78,11 +82,21 @@
         <item name="cornerSizeTopLeft">20dp</item>
         <item name="cornerSizeTopRight">20dp</item>
     </style>
- <style name="ShapeAppearance.CardHome"
+
+    <style name="ShapeAppearance.CardHome"
         parent="ShapeAppearance.MaterialComponents.MediumComponent">
     <!--        <item name="cornerSizeBottomLeft">76dp</item>-->
         <item name="cornerSizeBottomLeft">40dp</item>
         <item name="cornerSizeBottomRight">40dp</item>
+        <item name="cornerSizeTopLeft">40dp</item>
+        <item name="cornerSizeTopRight">40dp</item>
+    </style>
+
+    <style name="ShapeAppearance.cardRequst"
+        parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <!--        <item name="cornerSizeBottomLeft">76dp</item>-->
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeTopLeft">40dp</item>
         <item name="cornerSizeTopRight">40dp</item>
     </style>

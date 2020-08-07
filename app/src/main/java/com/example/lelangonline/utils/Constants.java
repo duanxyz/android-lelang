@@ -14,7 +14,6 @@ import com.example.lelangonline.models.saved.SavedBarang;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -28,6 +27,7 @@ public class Constants {
     public static final String ITEMS_TABLE_NAME = "items_table";
     public static final String ITEMS_TABLE_NAME1 = "auctions_table";
     public static final String USER_TABLE_NAME = "user_table";
+    public static final String BANKS_TABLE_NAME = "banks_table";
     public static final String SAVED_TABLE_NAME = "saved_table";
     public static final String COUNTRY_PREFS = "countryPref";
     public static final String USERID_PREFS = "userIDPref";
@@ -83,4 +83,14 @@ public class Constants {
         return category;
     }
 
+    public static void getAtmMethod(){
+        ArrayList<String> atmMethod = new ArrayList<>();
+        atmMethod.add("Masukan kartu debit Anda ke dalam mesin ATM.");
+        atmMethod.add("Setelah itu masukan PIN Anda untuk melanjutkan ke menu utama.");
+        atmMethod.add("Pada menu utama cari pilihan TRANSAKSI LAINNYA. Di menu berikutnya tekan tulisan TRANSFER untuk melanjutkan.");
+        atmMethod.add("Di menu TRANSFER, pilihan KE REKENING BANK agar dapat menyelesaikan transaksi.");
+        atmMethod.add("Pada menu ini, Anda akan diminta memasukkan nomor tujuan. Untuk hal ini, Anda cukup masukan 3901+Nomor HP yang terdaftar di akun DANA Anda.");
+        atmMethod.add("Setelah itu lanjutkan ke menu berikutnya untuk memasukkan total saldo yang akan Anda top up.");
+        atmMethod.add("Setelah itu, Anda cukup ikuti instruksi pada mesin ATM untuk menyelesaikan proses.");
+    }
 }
